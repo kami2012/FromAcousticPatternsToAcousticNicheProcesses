@@ -1,0 +1,1275 @@
+
+==============================
+Summary for plot: APN1 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 703 species pair combinations, 581 pairs (82.65 %) were removed from the analysis because expected co-occurrence was < 1 and 122 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          38.0          553.0            2.0           14.0          106.0            0.0           13.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: APN2 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 703 species pair combinations, 507 pairs (72.12 %) were removed from the analysis because expected co-occurrence was < 1 and 196 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          38.0          660.0           12.0           23.0          161.0            0.0           17.9 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: APW2 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 820 species pair combinations, 656 pairs (80 %) were removed from the analysis because expected co-occurrence was < 1 and 164 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          41.0          545.0            4.0           16.0          144.0            0.0           12.2 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CA59 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 820 species pair combinations, 677 pairs (82.56 %) were removed from the analysis because expected co-occurrence was < 1 and 143 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          41.0          663.0            5.0           16.0          122.0            0.0           14.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CA60 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 465 species pair combinations, 391 pairs (84.09 %) were removed from the analysis because expected co-occurrence was < 1 and 74 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          31.0          496.0            4.0           14.0           56.0            0.0           24.3 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CA61 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 990 species pair combinations, 888 pairs (89.7 %) were removed from the analysis because expected co-occurrence was < 1 and 102 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          45.0          737.0            2.0           20.0           80.0            0.0           21.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CA62 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 300 species pair combinations, 256 pairs (85.33 %) were removed from the analysis because expected co-occurrence was < 1 and 44 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          25.0          541.0            0.0           15.0           29.0            0.0           34.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CA63 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 325 species pair combinations, 276 pairs (84.92 %) were removed from the analysis because expected co-occurrence was < 1 and 49 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          26.0          357.0            0.0           10.0           39.0            0.0           20.4 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CA64 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 595 species pair combinations, 519 pairs (87.23 %) were removed from the analysis because expected co-occurrence was < 1 and 76 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          35.0          475.0            0.0           15.0           61.0            0.0           19.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CAZ01 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 861 species pair combinations, 700 pairs (81.3 %) were removed from the analysis because expected co-occurrence was < 1 and 161 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          42.0          633.0            6.0           18.0          137.0            0.0           14.9 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CAZ05 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 496 species pair combinations, 419 pairs (84.48 %) were removed from the analysis because expected co-occurrence was < 1 and 77 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          32.0          394.0            3.0            8.0           66.0            0.0           14.3 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CAZ07 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 666 species pair combinations, 525 pairs (78.83 %) were removed from the analysis because expected co-occurrence was < 1 and 141 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          37.0          652.0            5.0           25.0          111.0            0.0           21.3 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CAZ12 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 820 species pair combinations, 695 pairs (84.76 %) were removed from the analysis because expected co-occurrence was < 1 and 125 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          41.0          601.0            1.0           21.0          103.0            0.0           17.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CAZ14 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 820 species pair combinations, 661 pairs (80.61 %) were removed from the analysis because expected co-occurrence was < 1 and 159 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          41.0          593.0            2.0           14.0          143.0            0.0           10.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CAZ17 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 496 species pair combinations, 409 pairs (82.46 %) were removed from the analysis because expected co-occurrence was < 1 and 87 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          32.0          483.0            0.0           18.0           69.0            0.0           20.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR01 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 496 species pair combinations, 428 pairs (86.29 %) were removed from the analysis because expected co-occurrence was < 1 and 68 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          32.0          416.0            1.0           13.0           54.0            0.0           20.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR02 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 741 species pair combinations, 651 pairs (87.85 %) were removed from the analysis because expected co-occurrence was < 1 and 90 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          39.0          891.0            1.0           13.0           76.0            0.0           15.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR03 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 946 species pair combinations, 782 pairs (82.66 %) were removed from the analysis because expected co-occurrence was < 1 and 164 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          44.0          645.0           12.0           27.0          125.0            0.0           23.8 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR04 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 703 species pair combinations, 605 pairs (86.06 %) were removed from the analysis because expected co-occurrence was < 1 and 98 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          38.0          679.0            1.0           21.0           76.0            0.0           22.4 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR05 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 528 species pair combinations, 445 pairs (84.28 %) were removed from the analysis because expected co-occurrence was < 1 and 83 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          33.0          461.0            2.0           16.0           65.0            0.0           21.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR06 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 595 species pair combinations, 522 pairs (87.73 %) were removed from the analysis because expected co-occurrence was < 1 and 73 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          35.0          528.0            0.0           17.0           56.0            0.0           23.3 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR07 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 406 species pair combinations, 352 pairs (86.7 %) were removed from the analysis because expected co-occurrence was < 1 and 54 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          29.0          474.0            0.0           15.0           39.0            0.0           27.8 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR08 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 435 species pair combinations, 367 pairs (84.37 %) were removed from the analysis because expected co-occurrence was < 1 and 68 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          30.0          464.0            1.0            9.0           58.0            0.0           14.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR10 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 630 species pair combinations, 542 pairs (86.03 %) were removed from the analysis because expected co-occurrence was < 1 and 88 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          36.0          538.0            1.0           13.0           74.0            0.0           15.9 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR11 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 820 species pair combinations, 753 pairs (91.83 %) were removed from the analysis because expected co-occurrence was < 1 and 67 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          41.0          456.0            0.0           10.0           57.0            0.0           14.9 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR12 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 378 species pair combinations, 318 pairs (84.13 %) were removed from the analysis because expected co-occurrence was < 1 and 60 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+            28            575              2             16             42              0             30 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR13 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 465 species pair combinations, 423 pairs (90.97 %) were removed from the analysis because expected co-occurrence was < 1 and 42 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          31.0          471.0            2.0           15.0           25.0            0.0           40.5 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR14 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 406 species pair combinations, 355 pairs (87.44 %) were removed from the analysis because expected co-occurrence was < 1 and 51 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          29.0          595.0            0.0           20.0           31.0            0.0           39.2 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR17 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 253 species pair combinations, 208 pairs (82.21 %) were removed from the analysis because expected co-occurrence was < 1 and 45 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          23.0          363.0            0.0           11.0           34.0            0.0           24.4 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: CR18 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 666 species pair combinations, 504 pairs (75.68 %) were removed from the analysis because expected co-occurrence was < 1 and 162 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          37.0          622.0            8.0           23.0          131.0            0.0           19.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG11_old 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 465 species pair combinations, 415 pairs (89.25 %) were removed from the analysis because expected co-occurrence was < 1 and 50 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+            31            512              1             16             33              0             34 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG37 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 435 species pair combinations, 380 pairs (87.36 %) were removed from the analysis because expected co-occurrence was < 1 and 55 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          30.0          472.0            1.0           13.0           41.0            0.0           25.5 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG38 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 435 species pair combinations, 375 pairs (86.21 %) were removed from the analysis because expected co-occurrence was < 1 and 60 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+            30            540              2             13             45              0             25 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG39 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 820 species pair combinations, 719 pairs (87.68 %) were removed from the analysis because expected co-occurrence was < 1 and 101 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          41.0          660.0            5.0           22.0           74.0            0.0           26.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG40 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 741 species pair combinations, 649 pairs (87.58 %) were removed from the analysis because expected co-occurrence was < 1 and 92 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          39.0          655.0            3.0           17.0           72.0            0.0           21.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG41 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 703 species pair combinations, 586 pairs (83.36 %) were removed from the analysis because expected co-occurrence was < 1 and 117 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          38.0          613.0            3.0           17.0           97.0            0.0           17.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG42 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 528 species pair combinations, 451 pairs (85.42 %) were removed from the analysis because expected co-occurrence was < 1 and 77 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          33.0          537.0            3.0           14.0           60.0            0.0           22.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG43 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 666 species pair combinations, 590 pairs (88.59 %) were removed from the analysis because expected co-occurrence was < 1 and 76 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          37.0          391.0            0.0           11.0           65.0            0.0           14.5 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG44 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 780 species pair combinations, 680 pairs (87.18 %) were removed from the analysis because expected co-occurrence was < 1 and 100 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+            40            570              4             18             78              0             22 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG45 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 435 species pair combinations, 370 pairs (85.06 %) were removed from the analysis because expected co-occurrence was < 1 and 65 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          30.0          460.0            0.0           15.0           50.0            0.0           23.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG46 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 78 species pair combinations, 52 pairs (66.67 %) were removed from the analysis because expected co-occurrence was < 1 and 26 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          13.0          338.0            0.0           12.0           14.0            0.0           46.2 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG47 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 210 species pair combinations, 176 pairs (83.81 %) were removed from the analysis because expected co-occurrence was < 1 and 34 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          21.0          396.0            0.0            4.0           30.0            0.0           11.8 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG48 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 496 species pair combinations, 422 pairs (85.08 %) were removed from the analysis because expected co-occurrence was < 1 and 74 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          32.0          563.0            1.0           10.0           63.0            0.0           14.9 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG49 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 528 species pair combinations, 416 pairs (78.79 %) were removed from the analysis because expected co-occurrence was < 1 and 112 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          33.0          619.0            4.0           17.0           91.0            0.0           18.8 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG50 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 496 species pair combinations, 438 pairs (88.31 %) were removed from the analysis because expected co-occurrence was < 1 and 58 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          32.0          490.0            0.0           12.0           46.0            0.0           20.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG51 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 946 species pair combinations, 804 pairs (84.99 %) were removed from the analysis because expected co-occurrence was < 1 and 142 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          44.0          634.0            2.0           23.0          117.0            0.0           17.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OG52 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 28 species pair combinations, 19 pairs (67.86 %) were removed from the analysis because expected co-occurrence was < 1 and 9 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+           8.0          335.0            0.0            5.0            4.0            0.0           55.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OGZ04 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 861 species pair combinations, 768 pairs (89.2 %) were removed from the analysis because expected co-occurrence was < 1 and 93 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          42.0          504.0            0.0           15.0           78.0            0.0           16.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OGZ09 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 171 species pair combinations, 130 pairs (76.02 %) were removed from the analysis because expected co-occurrence was < 1 and 41 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          19.0          345.0            0.0           13.0           28.0            0.0           31.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OGZ10 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 666 species pair combinations, 586 pairs (87.99 %) were removed from the analysis because expected co-occurrence was < 1 and 80 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          37.0          491.0            0.0           14.0           66.0            0.0           17.5 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OGZ13 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 741 species pair combinations, 661 pairs (89.2 %) were removed from the analysis because expected co-occurrence was < 1 and 80 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          39.0          464.0            0.0           15.0           65.0            0.0           18.8 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OGZ20 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 820 species pair combinations, 717 pairs (87.44 %) were removed from the analysis because expected co-occurrence was < 1 and 103 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          41.0          506.0            2.0           18.0           83.0            0.0           19.4 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OGZ21 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 561 species pair combinations, 454 pairs (80.93 %) were removed from the analysis because expected co-occurrence was < 1 and 107 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+            34            454              1             15             91              0             15 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OGZ22 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 528 species pair combinations, 457 pairs (86.55 %) were removed from the analysis because expected co-occurrence was < 1 and 71 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          33.0          602.0            2.0           14.0           55.0            0.0           22.5 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OGZ23 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 946 species pair combinations, 837 pairs (88.48 %) were removed from the analysis because expected co-occurrence was < 1 and 109 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          44.0          609.0            3.0           18.0           88.0            0.0           19.3 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: OGZ25 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 946 species pair combinations, 856 pairs (90.49 %) were removed from the analysis because expected co-occurrence was < 1 and 90 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          44.0          482.0            1.0           13.0           76.0            0.0           15.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PA53 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 666 species pair combinations, 560 pairs (84.08 %) were removed from the analysis because expected co-occurrence was < 1 and 106 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          37.0          768.0            3.0           20.0           83.0            0.0           21.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PA54 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 861 species pair combinations, 707 pairs (82.11 %) were removed from the analysis because expected co-occurrence was < 1 and 154 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          42.0          557.0            1.0           14.0          139.0            0.0            9.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PA55 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 595 species pair combinations, 490 pairs (82.35 %) were removed from the analysis because expected co-occurrence was < 1 and 105 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          35.0          513.0            0.0           15.0           90.0            0.0           14.3 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PA56 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 528 species pair combinations, 452 pairs (85.61 %) were removed from the analysis because expected co-occurrence was < 1 and 76 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          33.0          588.0            5.0           16.0           55.0            0.0           27.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PA57 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 378 species pair combinations, 319 pairs (84.39 %) were removed from the analysis because expected co-occurrence was < 1 and 59 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          28.0          451.0            0.0           11.0           48.0            0.0           18.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PA58 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 741 species pair combinations, 598 pairs (80.7 %) were removed from the analysis because expected co-occurrence was < 1 and 143 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          39.0          569.0            5.0           23.0          115.0            0.0           19.6 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PAZ03 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 946 species pair combinations, 649 pairs (68.6 %) were removed from the analysis because expected co-occurrence was < 1 and 297 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          44.0          744.0           25.0           25.0          247.0            0.0           16.8 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PAZ07 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 741 species pair combinations, 568 pairs (76.65 %) were removed from the analysis because expected co-occurrence was < 1 and 173 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          39.0          810.0           17.0           30.0          126.0            0.0           27.2 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PAZ11 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 820 species pair combinations, 632 pairs (77.07 %) were removed from the analysis because expected co-occurrence was < 1 and 188 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          41.0          780.0           25.0           31.0          132.0            0.0           29.8 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PAZ15 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 741 species pair combinations, 596 pairs (80.43 %) were removed from the analysis because expected co-occurrence was < 1 and 145 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          39.0          516.0            7.0           24.0          114.0            0.0           21.4 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PAZ18 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 741 species pair combinations, 614 pairs (82.86 %) were removed from the analysis because expected co-occurrence was < 1 and 127 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          39.0          606.0            2.0           21.0          104.0            0.0           18.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR19 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 561 species pair combinations, 490 pairs (87.34 %) were removed from the analysis because expected co-occurrence was < 1 and 71 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          34.0          442.0            2.0           15.0           54.0            0.0           23.9 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR20 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 496 species pair combinations, 420 pairs (84.68 %) were removed from the analysis because expected co-occurrence was < 1 and 76 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+            32            631              3             16             57              0             25 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR21 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 351 species pair combinations, 284 pairs (80.91 %) were removed from the analysis because expected co-occurrence was < 1 and 67 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          27.0          544.0            0.0           15.0           52.0            0.0           22.4 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR21WUE 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 595 species pair combinations, 530 pairs (89.08 %) were removed from the analysis because expected co-occurrence was < 1 and 65 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          35.0          581.0            1.0           21.0           43.0            0.0           33.8 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR22 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 496 species pair combinations, 437 pairs (88.1 %) were removed from the analysis because expected co-occurrence was < 1 and 59 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          32.0          475.0            0.0           18.0           41.0            0.0           30.5 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR23 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 378 species pair combinations, 308 pairs (81.48 %) were removed from the analysis because expected co-occurrence was < 1 and 70 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          28.0          446.0            1.0           16.0           53.0            0.0           24.3 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR24 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 496 species pair combinations, 449 pairs (90.52 %) were removed from the analysis because expected co-occurrence was < 1 and 47 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          32.0          348.0            0.0            9.0           38.0            0.0           19.1 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR25 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 435 species pair combinations, 364 pairs (83.68 %) were removed from the analysis because expected co-occurrence was < 1 and 71 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          30.0          548.0            0.0           17.0           54.0            0.0           23.9 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR26 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 528 species pair combinations, 457 pairs (86.55 %) were removed from the analysis because expected co-occurrence was < 1 and 71 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          33.0          470.0            4.0           14.0           53.0            0.0           25.4 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR27 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 903 species pair combinations, 818 pairs (90.59 %) were removed from the analysis because expected co-occurrence was < 1 and 85 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+            43            546              2             15             68              0             20 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR28 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 666 species pair combinations, 583 pairs (87.54 %) were removed from the analysis because expected co-occurrence was < 1 and 83 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          37.0          499.0            2.0           12.0           69.0            0.0           16.9 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR29 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 903 species pair combinations, 800 pairs (88.59 %) were removed from the analysis because expected co-occurrence was < 1 and 103 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          43.0          537.0            0.0           19.0           84.0            0.0           18.4 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR30 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 630 species pair combinations, 557 pairs (88.41 %) were removed from the analysis because expected co-occurrence was < 1 and 73 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          36.0          504.0            0.0           15.0           58.0            0.0           20.5 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR31 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 496 species pair combinations, 419 pairs (84.48 %) were removed from the analysis because expected co-occurrence was < 1 and 77 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          32.0          491.0            3.0           15.0           59.0            0.0           23.4 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR32 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 435 species pair combinations, 360 pairs (82.76 %) were removed from the analysis because expected co-occurrence was < 1 and 75 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          30.0          421.0            2.0           15.0           58.0            0.0           22.7 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR33 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 465 species pair combinations, 399 pairs (85.81 %) were removed from the analysis because expected co-occurrence was < 1 and 66 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          31.0          548.0            2.0           18.0           46.0            0.0           30.3 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR34 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 561 species pair combinations, 478 pairs (85.2 %) were removed from the analysis because expected co-occurrence was < 1 and 83 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          34.0          437.0            4.0            8.0           71.0            0.0           14.5 
+attr(,"class")
+[1] "summary.cooccur"
+
+==============================
+Summary for plot: PR36 
+==============================
+Call:
+cooccur(mat = mat_site_spp, type = "spp_site", thresh = TRUE, 
+    spp_names = TRUE)
+
+Of 300 species pair combinations, 243 pairs (81 %) were removed from the analysis because expected co-occurrence was < 1 and 57 pairs were analyzed
+
+Cooccurrence Summary:
+       Species          Sites       Positive       Negative         Random Unclassifiable Non-random (%) 
+          25.0          652.0            3.0           13.0           41.0            0.0           28.1 
+attr(,"class")
+[1] "summary.cooccur"
