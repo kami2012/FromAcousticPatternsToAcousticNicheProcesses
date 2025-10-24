@@ -53,10 +53,10 @@ matrices_filtered <- lapply(matrices, function(mat) {
 })
 
 #------------------------
-# Run Cooccurrence analysis
+# Run cooccurence analysis
 #------------------------
 
-results_cooccurrence <- lapply(names(matrices_filtered), function(plot_name) {
+results_cooccurence <- lapply(names(matrices_filtered), function(plot_name) {
   mat_site_spp <- matrices_filtered[[plot_name]]
   
   tryCatch({
@@ -71,9 +71,9 @@ results_cooccurrence <- lapply(names(matrices_filtered), function(plot_name) {
     return(NULL)
   })
 })
-names(results_cooccurrence) <- names(matrices_filtered)
+names(results_cooccurence) <- names(matrices_filtered)
 
-save(results_cooccurrence, file = "Data/4_birdnet_retrained/threshold_05/results_cooccurrence.RData")
+save(results_cooccurence, file = "Data/4_birdnet_retrained/threshold_05/results_cooccurence.RData")
 
 #------------------------
 # Save Summary as text
@@ -82,8 +82,8 @@ save(results_cooccurrence, file = "Data/4_birdnet_retrained/threshold_05/results
 file_summary <- "Data/4_birdnet_retrained/threshold_05/all_cooccur_summaries.txt"
 cat("", file = file_summary)
 
-for (plot_name in names(results_cooccurrence)) {
-  res <- results_cooccurrence[[plot_name]]
+for (plot_name in names(results_cooccurence)) {
+  res <- results_cooccurence[[plot_name]]
   if (is.null(res)) next
   
   cat("\n==============================\n", file = file_summary, append = TRUE)
@@ -98,8 +98,8 @@ for (plot_name in names(results_cooccurrence)) {
 # Save Summary as dataframe
 #------------------------
 
-summary_df <- do.call(rbind, lapply(names(results_cooccurrence), function(plot_name) {
-  res <- results_cooccurrence[[plot_name]]
+summary_df <- do.call(rbind, lapply(names(results_cooccurence), function(plot_name) {
+  res <- results_cooccurence[[plot_name]]
   if (is.null(res)) return(NULL)
   
   s_text <- capture.output(summary(res))
@@ -125,7 +125,7 @@ row.names(summary_df) <- NULL
 
 summary_df
 
-write.table(summary_df, "Data/4_birdnet_retrained/threshold_05/results_cooccurrence_summary.csv", sep = ";", row.names = FALSE)
+write.table(summary_df, "Data/4_birdnet_retrained/threshold_05/results_cooccurence_summary.csv", sep = ";", row.names = FALSE)
 
 
 
