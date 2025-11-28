@@ -20,6 +20,8 @@ data_complete <- read.table("Data/1_experts/detections_freile_gelis_2021_2022_bi
 # Remove plots with all zero values (ACN1) and plots without context information (CR16)
 data_filtered <- data_complete[!data_complete$plot %in% c("ACN1", "CR16"), ] # => 85 plots
 
+write.csv(data_filtered, "Data/1_experts/bird_presence_absence_per_file.csv", row.names = FALSE)
+
 #split by plot
 data_per_plot <- split(data_filtered, data_filtered$plot)
 

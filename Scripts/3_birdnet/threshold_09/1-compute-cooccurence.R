@@ -32,6 +32,8 @@ data_filtered$Hafferia_immaculata <- pmax(data_filtered$Hafferia_immaculata, dat
 # Delete the Hafferia_zeledoni column
 data_filtered$Hafferia_zeledoni <- NULL
 
+write.csv(data_filtered, "Data/3_birdnet/threshold_09/bird_presence_absence_per_file.csv", row.names = FALSE)
+
 #split by plot
 data_per_plot <- split(data_filtered, data_filtered$plot)
 

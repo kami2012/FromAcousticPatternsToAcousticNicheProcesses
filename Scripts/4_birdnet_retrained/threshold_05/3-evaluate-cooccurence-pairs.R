@@ -110,6 +110,8 @@ write.csv(cooccurence_pairs_categories, "Data/4_birdnet_retrained/threshold_05/c
 ## Plot distances ##
 #--------------
 
+cooccurence_pairs_categories <- read.csv("Data/4_birdnet_retrained/threshold_05/cooccurence_pairs.csv", header=T, check.names = F)
+
 # Trait distance
 p1 <- ggplot(cooccurence_pairs_categories, aes(x = Label, y = trait_distance, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +

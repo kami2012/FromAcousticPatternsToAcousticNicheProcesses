@@ -33,12 +33,7 @@ data_filtered$Hafferia_immaculata <- pmax(data_filtered$Hafferia_immaculata, dat
 data_filtered$Hafferia_zeledoni <- NULL
 
 
-#experts_data_complete <- read.table("Data/1_experts/detections_freile_gelis_2021_2022_birds_dummy_pivot_reordered.csv", header=T, check.names = F,sep=";")
-
-# Remove plots with all zero values (ACN1) and plots without context information (CR16)
-#experts_data_filtered <- experts_data_complete[!experts_data_complete$plot %in% c("ACN1", "CR16"), ] # => 85 plots
-
-#data_matched <- data_filtered[trimws(tolower(data_filtered$filename)) %in% trimws(tolower(experts_data_filtered$filename)), ]
+write.csv(data_filtered, "Data/3_birdnet/threshold_05/bird_presence_absence_per_file.csv", row.names = FALSE)
 
 
 

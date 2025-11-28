@@ -23,6 +23,8 @@ data_filtered <- data_complete[!data_complete$plot %in% c("ACN1", "CR16"), ] # =
 # Replace spaces with underscores
 colnames(data_filtered)[3:ncol(data_filtered)] <- gsub(" ", "_", colnames(data_filtered)[3:ncol(data_filtered)])
 
+write.csv(data_filtered, "Data/2_rfc/threshold_09/bird_presence_absence_per_file.csv", row.names = FALSE)
+
 #split by plot
 data_per_plot <- split(data_filtered, data_filtered$plot)
 
