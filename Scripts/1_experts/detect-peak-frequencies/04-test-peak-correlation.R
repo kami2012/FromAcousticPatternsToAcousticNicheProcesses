@@ -15,14 +15,14 @@ library(ggrepel)
 ## Load data ##
 #--------------
 
-peak_frequencies <- read.csv2("Data/1_experts/peak_frequency_detections/peak_frequencies.csv")
+peak_frequencies <- read.csv2("Data/1_experts/peak_frequency_detections/xeno-canto/all_birds_mean_peak_frequencies.csv")
 
 #--------------
 ## Test correlation ##
 #--------------
 
 cor(peak_frequencies$peak_frequency_mikula, peak_frequencies$peak_frequency_xc, use = "complete.obs", method = "spearman")
-# 0.938142
+# 0.9000716
 
 
 ggplot(peak_frequencies, aes(x = peak_frequency_mikula, y = peak_frequency_xc, label = scinam)) +
