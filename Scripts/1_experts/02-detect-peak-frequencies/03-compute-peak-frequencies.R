@@ -56,7 +56,8 @@ get_peak_freq <- function(file, threshold_db = -80, min_freq_hz = 400, max_freq_
   return(peak_freq)
 }
 
-base_dir <- "Data/1_experts/peak_frequency_detections/xeno-canto/all_bird_song_recordings_xc"
+base_dir <- "Data/1_experts/peak_frequency_detections/xeno-canto/all_detected_birds/all_bird_song_recordings_xc/Leptotrygon_veraguensis"
+
 files <- list.files(base_dir, pattern = "\\.wav$", recursive = TRUE, full.names = TRUE, ignore.case = TRUE)
 
 peak_data <- data.frame(file = files,

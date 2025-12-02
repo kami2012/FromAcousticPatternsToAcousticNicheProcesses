@@ -1,0 +1,6 @@
+species;old_peak;new_peak;diff;changed_to_old;comment
+todirostrum_cinereum;5949.40;850.20;5099.20;true;
+cyanerpes_caeruleus;5070.90;8095.20;-3024.30;false;
+manacus_manacus;3643.70;1571.60;2072.10;true;
+dacnis_lineata;9575.00;8618.10;956.90;true;
+euphonia_fulvicrissa;3258.65;3235.40;23.25;false;picked value similar to mikula

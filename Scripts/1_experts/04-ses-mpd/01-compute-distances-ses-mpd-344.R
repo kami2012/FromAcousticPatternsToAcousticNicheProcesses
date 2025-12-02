@@ -16,7 +16,7 @@ library(ape)
 
 peak_frequencies <- read.csv2("Data/1_experts/peak_frequency_detections/xeno-canto/all_detected_birds/all_birds_mean_peak_frequencies.csv")
 
-# There is no peak frequency for Ara ambiguus and Leptotrygon veraguensis  
+# There is no peak frequency for Ara ambiguus 
 peak_frequencies <- peak_frequencies[!is.na(peak_frequencies$peak_frequency_xc), ]
 
 
@@ -27,6 +27,9 @@ load("Data/1_experts/traits_phylo/bird_tree.rda") # Phylogenetic Tree
 #--------------
 ## Peak frequency  ##
 #--------------
+
+# Convert peak_frequency_xc to numeric
+peak_frequencies$peak_frequency_xc <- as.numeric(gsub(",", ".", peak_frequencies$peak_frequency_xc))
 
 # Replace spaces with underscores in mapping
 mapping$ExpertName <- gsub(" ", "_", mapping$ExpertName)
@@ -185,7 +188,7 @@ dist_peak <- read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix.csv", row.
 dist_phylo <- read.csv2("Data/1_experts/dist_matrices/dist_phylogeny.csv", row.names = 1)
 
 # Exclude species that have no peak frequencies
-exclude_species <- c("Ara_ambiguus", "Geotrygon_veraguensis")
+exclude_species <- c("Ara_ambiguus")
 
 # Remove from phylogenetic distance matrix
 dist_phylo <- dist_phylo[!rownames(dist_phylo) %in% exclude_species, 

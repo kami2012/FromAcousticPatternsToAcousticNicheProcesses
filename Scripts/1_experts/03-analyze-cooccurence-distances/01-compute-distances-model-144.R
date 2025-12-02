@@ -1,0 +1,375 @@
+rm(list=ls(all=TRUE))
+Sys.setenv(LANG = "en")
+
+# Working directory
+setwd("E:/Manuscripts/4_co-occurence") 
+
+library(ape)
+library(dplyr) 
+library(purrr)
+
+## ============================================================================================================ ##
+## Compute distances based on peak frequencies, body mass, phylogeny, traits, ...
+
+
+#--------------
+## Load data ##
+#--------------
+
+load("Data/1_experts/co-occurrences/results_cooccurrence.RData") # cooccurrence pairs
+
+peak_frequencies <- read.csv2("Data/1_experts/peak_frequency_detections/xeno-canto/all_detected_birds/all_birds_mean_peak_frequencies.csv")
+
+# There is no peak frequency for Ara ambiguus 
+peak_frequencies <- peak_frequencies[!is.na(peak_frequencies$peak_frequency_xc), ]
+
+
+mapping <- read.csv2("Data/1_experts/bird_name_mapping_experts_xeno-canto.csv")
+avonet <- read.csv2("Data/1_experts/traits_phylo/CommunityAllplots334BirdSpecies_TraitsAvonet.csv")
+load("Data/1_experts/traits_phylo/bird_tree.rda") # Phylogenetic Tree
+
+
+#--------------
+## Target Species ##
+#--------------
+
+cooccurrence_pairs <- map_dfr(names(results_cooccurence), function(p) {
+  res <- results_cooccurence[[p]]$results
+  if (is.null(res)) return(NULL)
+  res %>%
+    dplyr::filter(p_lt <= 0.05 | p_gt <= 0.05) %>%
+    mutate(plot = p,
+           type = ifelse(p_gt <= 0.05, "positive", "negative")) %>%
+    mutate(type = as.character(type)) %>%   # ensure consistent type
+    dplyr::select(plot, sp1_name, sp2_name, type, p_lt, p_gt)
+})
+
+# Extract all target species
+target_species_vector <- unique(c(
+  cooccurrence_pairs$sp1_name, 
+  cooccurrence_pairs$sp2_name
+))
+
+# Sort alphabetically
+target_species_vector <- sort(target_species_vector)
+
+length(target_species_vector)
+# 144
+
+
+#--------------
+## Peak frequency  ##
+#--------------
+
+# Convert peak_frequency_xc to numeric
+peak_frequencies$peak_frequency_xc <- as.numeric(gsub(",", ".", peak_frequencies$peak_frequency_xc))
+
+# Replace spaces with underscores in mapping
+mapping$ExpertName <- gsub(" ", "_", mapping$ExpertName)
+mapping$XenoCantoName <- gsub(" ", "_", mapping$XenoCantoName)
+
+# Capitalize first letter of genus, keep species lowercase
+peak_frequencies$scinam <- sapply(strsplit(peak_frequencies$scinam, "_"), function(x) {
+  if (length(x) < 2) return(NA)
+  genus <- paste0(toupper(substr(x[1], 1, 1)), substr(x[1], 2, nchar(x[1])))
+  species <- tolower(x[2])
+  paste(genus, species, sep = "_")
+})
+
+# Remap scinam using mapping: XenoCantoName → ExpertName
+idx <- match(peak_frequencies$scinam, mapping$XenoCantoName)
+valid <- !is.na(idx)
+
+peak_frequencies$scinam[valid] <- mapping$ExpertName[idx[valid]]
+
+# Filter target species
+peak_frequencies <- peak_frequencies[peak_frequencies$scinam %in% target_species_vector, ]
+
+# Set species names as row identifiers
+row.names(peak_frequencies) <- peak_frequencies$scinam
+
+# Log-transform and scale
+peak_frequencies_scaled <- scale(log(peak_frequencies$peak_frequency_xc))
+row.names(peak_frequencies_scaled) <- row.names(peak_frequencies)
+
+# Compute Euclidean distance matrix between all species based on scaled log(Hz)
+dist_peak <- dist(peak_frequencies_scaled, method = "euclidean")
+dist_peak <- as.matrix(dist_peak)
+
+# Sort columns and rows 
+ord <- sort(row.names(dist_peak))
+dist_peak <- dist_peak[ord, ord]
+
+write.csv2(dist_peak, "Data/1_experts/dist_matrices/dist_peak_matrix_144.csv", row.names = TRUE)
+
+
+#--------------
+## Body mass  ##
+#--------------
+
+bodyMass_avonet <- avonet
+
+# Replace commas with dots and convert Mass to numeric
+bodyMass_avonet$Mass <- as.numeric(gsub(",", ".", bodyMass_avonet$Mass))
+
+# Check for zero or negative values
+bodyMass_avonet$Mass[bodyMass_avonet$Mass <= 0]
+
+# Use species names as row names
+row.names(bodyMass_avonet) <- bodyMass_avonet$Name.Phylogeny.Latin
+
+# Filter target species
+avonet_mass <- bodyMass_avonet[row.names(bodyMass_avonet) %in% target_species_vector, "Mass", drop = FALSE]
+
+# Log-transform and scale
+avonet_mass_scaled <- scale(log(avonet_mass$Mass))
+
+# Keep row names consistent
+rownames(avonet_mass_scaled) <- row.names(avonet_mass) 
+
+# Compute Euclidean distances
+dist_mass <- dist(avonet_mass_scaled, method = "euclidean")
+dist_mass <- as.matrix(dist_mass)
+
+write.csv2(dist_mass, "Data/1_experts/dist_matrices/dist_mass_matrix_144.csv", row.names = TRUE)
+
+
+#--------------
+## Traits  ##
+#--------------
+
+traits_avonet <- avonet
+
+# Use species names as row names
+row.names(traits_avonet) <- traits_avonet$Name.Phylogeny.Latin
+
+# Filter target species
+traits_avonet <- traits_avonet[row.names(traits_avonet) %in% target_species_vector, ]
+
+# Alphabetically sort species
+traits_avonet <- traits_avonet[order(row.names(traits_avonet)), ]
+
+# List of columns that should be numeric
+numeric_cols <- c("BeakLength_Culmen", "BeakLength_Nares", "BeakWidth", "BeakDepth", 
+                  "TarsusLength", "WingLength", "KippsDistance", "Secondary1", 
+                  "Hand.WingIndex", "TailLength", "Mass", "MinLatitude", 
+                  "MaxLatitude", "CentroidLatitude", "CentroidLongitude", "RangeSize")
+
+# Function to convert columns to numeric
+convert_to_numeric <- function(column) {
+  # Replace commas with dots
+  column <- gsub(",", ".", column)
+  # Convert to numeric
+  as.numeric(column)
+}
+
+# Apply conversion to specified columns
+traits_avonet[numeric_cols] <- lapply(traits_avonet[numeric_cols], convert_to_numeric)
+
+####### model body size dependent traits and take residuals 
+####### body mass in log(bodymass) 
+
+# Log-transform Mass for residuals
+traits <- traits_avonet
+traits$log_mass <- log(traits$Mass)
+
+# Compute residuals for body-size dependent traits
+mod.beak.l <- lm(log(BeakLength_Culmen) ~ log(Mass), data = traits)
+traits$beak_length_res <- mod.beak.l$residuals
+
+mod.beak.w <- lm(log(BeakWidth) ~ log(Mass), data = traits)
+traits$beak_width_res <- mod.beak.w$residuals
+
+mod.tarsus <- lm(log(TarsusLength) ~ log(Mass), data = traits)
+traits$tarsus_res <- mod.tarsus$residuals
+
+mod.wing <- lm(log(WingLength) ~ log(Mass), data = traits)
+traits$wing_res <- mod.wing$residuals
+
+mod.tail <- lm(log(TailLength) ~ log(Mass), data = traits)
+traits$tail_res <- mod.tail$residuals
+
+# Keep only relevant traits
+keep <- c("Hand.WingIndex","HabitatDensity","Migration","TrophicNiche","PrimaryLifestyle",
+          "beak_length_res","beak_width_res","tarsus_res","wing_res","tail_res", "log_mass")
+traits <- traits[,names(traits) %in% keep]
+
+# Convert character columns to factors
+for (i in 1:ncol(traits)) {
+  if (is.character(traits[, i])) traits[, i] <- factor(traits[, i], levels = unique(traits[, i]))
+}
+
+# Compute Gower distance matrix
+dist_traits <- cluster::daisy(x = traits, metric = "gower") %>% as.matrix()
+
+# Alphabetically sort species
+ord <- sort(row.names(dist_traits))
+dist_traits <- dist_traits[ord, ord]
+
+write.csv2(dist_traits, "Data/1_experts/dist_matrices/dist_traits_matrix_144.csv", row.names = TRUE)
+
+#--------------
+## Traits without body mass  ##
+#--------------
+
+traits_avonet <- avonet
+
+# Use species names as row names
+row.names(traits_avonet) <- traits_avonet$Name.Phylogeny.Latin
+
+# Filter target species
+traits_avonet <- traits_avonet[row.names(traits_avonet) %in% target_species_vector, ]
+
+# Alphabetically sort species
+traits_avonet <- traits_avonet[order(row.names(traits_avonet)), ]
+
+# List of columns that should be numeric
+numeric_cols <- c("BeakLength_Culmen", "BeakLength_Nares", "BeakWidth", "BeakDepth", 
+                  "TarsusLength", "WingLength", "KippsDistance", "Secondary1", 
+                  "Hand.WingIndex", "TailLength", "Mass", "MinLatitude", 
+                  "MaxLatitude", "CentroidLatitude", "CentroidLongitude", "RangeSize")
+
+# Function to convert columns to numeric
+convert_to_numeric <- function(column) {
+  # Replace commas with dots
+  column <- gsub(",", ".", column)
+  # Convert to numeric
+  as.numeric(column)
+}
+
+# Apply conversion to specified columns
+traits_avonet[numeric_cols] <- lapply(traits_avonet[numeric_cols], convert_to_numeric)
+
+####### model body size dependent traits and take residuals 
+####### body mass in log(bodymass) 
+
+# Log-transform Mass for residuals
+traits <- traits_avonet
+traits$log_mass <- log(traits$Mass)
+
+# Compute residuals for body-size dependent traits
+mod.beak.l <- lm(log(BeakLength_Culmen) ~ log(Mass), data = traits)
+traits$beak_length_res <- mod.beak.l$residuals
+
+mod.beak.w <- lm(log(BeakWidth) ~ log(Mass), data = traits)
+traits$beak_width_res <- mod.beak.w$residuals
+
+mod.tarsus <- lm(log(TarsusLength) ~ log(Mass), data = traits)
+traits$tarsus_res <- mod.tarsus$residuals
+
+mod.wing <- lm(log(WingLength) ~ log(Mass), data = traits)
+traits$wing_res <- mod.wing$residuals
+
+mod.tail <- lm(log(TailLength) ~ log(Mass), data = traits)
+traits$tail_res <- mod.tail$residuals
+
+# Keep only relevant traits
+keep <- c("Hand.WingIndex","HabitatDensity","Migration","TrophicNiche","PrimaryLifestyle",
+          "beak_length_res","beak_width_res","tarsus_res","wing_res","tail_res")
+traits <- traits[,names(traits) %in% keep]
+
+# Convert character columns to factors
+for (i in 1:ncol(traits)) {
+  if (is.character(traits[, i])) traits[, i] <- factor(traits[, i], levels = unique(traits[, i]))
+}
+
+# Compute Gower distance matrix
+dist_traits_wo_mass <- cluster::daisy(x = traits, metric = "gower") %>% as.matrix()
+
+# Alphabetically sort species
+ord <- sort(row.names(dist_traits_wo_mass))
+dist_traits_wo_mass <- dist_traits_wo_mass[ord, ord]
+
+write.csv2(dist_traits_wo_mass, "Data/1_experts/dist_matrices/dist_traits_wo_mass_matrix_144.csv", row.names = TRUE)
+
+
+#--------------
+## Phylogeny  ##
+#--------------
+
+# Create phylogenetic distances matrix
+dist_phylo <- cophenetic(tr)
+
+species_intersection <- intersect(target_species_vector, rownames(dist_phylo))
+
+dist_phylo <- dist_phylo[species_intersection, species_intersection]
+
+# Alphabetically sort species
+ord <- sort(rownames(dist_phylo))
+dist_phylo <- dist_phylo[ord, ord]
+
+write.csv2(dist_phylo, "Data/1_experts/dist_matrices/dist_phylogeny_144.csv", row.names = TRUE)
+
+
+#--------------
+## Compute peak distances corrected for phylogenetic relatedness ##
+#--------------
+
+dist_peak <- read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix_144.csv", row.names = 1)
+dist_phylo <- read.csv2("Data/1_experts/dist_matrices/dist_phylogeny_144.csv", row.names = 1)
+
+# Check, if rows match
+all(rownames(dist_phylo) == rownames(dist_peak))
+
+species <- rownames(dist_peak)
+
+# Flatten only upper triangle (excluding diagonal)
+y <- dist_peak[upper.tri(dist_peak)]
+x <- dist_phylo[upper.tri(dist_phylo)]
+
+# Fit linear model
+mod <- lm(y ~ x)
+residuals_vec <- residuals(mod)
+
+# Number of elements in upper triangle
+n_upper <- length(species) * (length(species) - 1) / 2
+length(residuals_vec)  # should equal n_upper
+
+# Initialize empty matrix
+res_peak <- matrix(NA, nrow = length(species), ncol = length(species))
+rownames(res_peak) <- colnames(res_peak) <- species
+
+# Assign residuals to upper triangle
+res_peak[upper.tri(res_peak)] <- residuals_vec
+
+# Mirror to lower triangle to make symmetric
+res_peak[lower.tri(res_peak)] <- t(res_peak)[lower.tri(res_peak)]
+
+write.csv2(res_peak, "Data/1_experts/dist_matrices/dist_peak_matrix_phylo_corrected_144.csv", row.names = TRUE)
+
+
+#--------------
+## Compute trait distances corrected for phylogenetic relatedness ##
+#--------------
+
+dist_trait <- read.csv2("Data/1_experts/dist_matrices/dist_traits_matrix_144.csv", row.names = 1)
+dist_phylo <- read.csv2("Data/1_experts/dist_matrices/dist_phylogeny_144.csv", row.names = 1)
+
+# Check, if rows match
+all(rownames(dist_trait) == rownames(dist_phylo))
+
+# Check, if columns match
+all(colnames(dist_trait) == colnames(dist_phylo))
+
+species <- rownames(dist_trait)
+
+# Flatten upper triangle
+y <- dist_trait[upper.tri(dist_trait)]
+x <- dist_phylo[upper.tri(dist_phylo)]
+
+# Fit linear model to correct trait distances for phylogeny
+mod <- lm(y ~ x)
+residuals_vec <- residuals(mod)
+
+# Initialize empty symmetric matrix
+res_mat <- matrix(NA, nrow = length(species), ncol = length(species))
+rownames(res_mat) <- colnames(res_mat) <- rownames(dist_trait)
+
+# Fill upper triangle with residuals
+res_mat[upper.tri(res_mat)] <- residuals_vec
+
+# Mirror to lower triangle
+res_mat[lower.tri(res_mat)] <- t(res_mat)[lower.tri(res_mat)]
+
+write.csv2(res_mat, "Data/1_experts/dist_matrices/dist_trait_matrix_phylo_corrected_144.csv", row.names = TRUE)
+
