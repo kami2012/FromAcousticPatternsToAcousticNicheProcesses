@@ -45,7 +45,7 @@ freq_combined <- tibble(species = species_xc) %>%  # create a tibble (data frame
   left_join(
     mikula_freq %>%
       select(scinam, peak_frequency) %>%              # keep only columns 'scinam' and 'peak_frequency' from mikula_freq
-      rename(peak_frequency_mikula = peak_frequency), # rename 'peak_frequency' to 'peak_frequency_mikula'
+      rename(peak_freq_mikula = peak_frequency), # rename 'peak_frequency' to 'peak_frequency_mikula'
     by = "scinam"                                     # join both tables by matching values in the 'scinam' column
   )  # perform a left join so all species from species_xc are kept, even if no match is found in mikula_freq
 
@@ -54,13 +54,29 @@ freq_combined <- tibble(species = species_xc) %>%  # create a tibble (data frame
 ## Align all detected birds with Sagar`s species (Proceedings of the Royal Society B)
 #--------------
 
+# *** STEP 1: CLEAN AND CONVERT SAGAR'S DATA ***
+sagar_freq <- sagar_freq %>%
+  mutate(
+    # 1. Replace the comma (,) decimal separator with a period (.) in the dom.freq string
+    dom.freq_clean = gsub(",", ".", dom.freq),
+    
+    # 2. Convert the cleaned string to a number and multiply by 1000 
+    #    to convert from Kilohertz (kHz) to Hertz (Hz).
+    dom_freq_hz = as.numeric(dom.freq_clean) * 1000,
+    dom_freq_hz = round(dom_freq_hz, 2)
+  ) %>%
+  # Keep only the required columns for the join
+  select(species, dom_freq_hz)
+
+# *** STEP 2: PERFORM THE JOIN ***
 freq_combined <- freq_combined %>%
   left_join(
-    # The right table: Select and rename columns from sagar_freq
+    # Use the cleaned sagar_freq dataset
     sagar_freq %>%
-      select(species, dom.freq) %>% # Select the two columns needed
-      rename(dom_freq_sagar = dom.freq), # Rename the frequency column for clarity
-    # The join condition: Match 'scinam' in freq_combined to 'species' in sagar_freq
+      # Rename the corrected column
+      rename(dom_freq_sagar = dom_freq_hz),
+    
+    # Join on the matching scientific name columns
     by = c("scinam" = "species")
   )
 

@@ -17,8 +17,7 @@ library(tuneR)
 ## Load data ##
 #--------------
 
-peak_frequencies <- read.csv2("Data/1_experts/peak_frequency_detections/xeno-canto/peak_frequencies_all_species.csv")
-songs_xc <- read.csv2("Data/1_experts/peak_frequency_detections/xeno-canto/all_bird_song_recordings_from_xeno-canto.csv")
+songs_xc <- read.csv2("Data/1_experts/peak_frequency_detections/data_from_xeno-canto/song_recordings_from_xeno-canto.csv")
 
 #--------------
 ## Calculate peak frequency for each recording
@@ -56,7 +55,7 @@ get_peak_freq <- function(file, threshold_db = -80, min_freq_hz = 400, max_freq_
   return(peak_freq)
 }
 
-base_dir <- "Data/1_experts/peak_frequency_detections/xeno-canto/all_detected_birds/all_bird_song_recordings_xc/Leptotrygon_veraguensis"
+base_dir <- "Data/1_experts/peak_frequency_detections/ata_from_xeno-canto/song_recordings_xc"
 
 files <- list.files(base_dir, pattern = "\\.wav$", recursive = TRUE, full.names = TRUE, ignore.case = TRUE)
 
@@ -81,14 +80,14 @@ songs_xc_shortened <- songs_xc_shortened %>%
 songs_xc_shortened <- songs_xc_shortened %>%
   mutate(peak_freq_hz = round(peak_freq_hz , 1))
 
-write.csv2(songs_xc_shortened, "Data/1_experts/peak_frequency_detections/xeno-canto/all_birds_peak_frequencies.csv", row.names = FALSE)
+write.csv2(songs_xc_shortened, "Data/1_experts/peak_frequency_detections/data_from_xeno-canto/peak_frequencies.csv", row.names = FALSE)
 
 
 #--------------
 ## Calculate median peak frequency per species
 #--------------
 
-peak_data <- read.csv2("Data/1_experts/peak_frequency_detections/xeno-canto/all_birds_peak_frequencies.csv")
+peak_data <- read.csv2("Data/1_experts/peak_frequency_detections/data_from_xeno-canto/peak_frequencies.csv")
 
 peak_frequencies_xc_median <- peak_data %>%
   #dplyr::filter(is.na(comment) | comment != "skipped") %>% # skip files with dominant noise
@@ -98,29 +97,6 @@ peak_frequencies_xc_median <- peak_data %>%
     xc_record_count = sum(!is.na(peak_freq_hz))
   )
 
-# Normalize names in median table: lowercase + underscores
-median_xc <- peak_frequencies_xc_median %>%
-  mutate(scinam_norm = gsub(" ", "_", tolower(full_name)))
-
-# Merge by matching scinam
-peak_frequencies <- peak_frequencies %>%
-  left_join(median_xc %>% select(scinam_norm, median_peak, xc_record_count),
-            by = c("scinam" = "scinam_norm")) %>%
-  mutate(peak_frequency_xc = median_peak) %>%  
-  select(-median_peak)
-
-peak_frequencies <- peak_frequencies %>%
-  arrange(scinam)
-
-peak_frequencies <- peak_frequencies %>%
-  select(scinam, peak_frequency_mikula, peak_frequency_xc, everything(), xc_record_count)
-
-write.csv2(peak_frequencies, "Data/1_experts/peak_frequency_detections/xeno-canto/all_birds_mean_peak_frequencies.csv", row.names = FALSE)
-
-# Test correlation
-cor(peak_frequencies$peak_frequency_mikula, peak_frequencies$peak_frequency_xc, use = "complete.obs", method = "spearman")
-# 0.9000716
-
-
+write.csv2(peak_frequencies_xc_median, "Data/1_experts/peak_frequency_detections/data_from_xeno-canto/mean_peak_frequency.csv", row.names = FALSE)
 
 
