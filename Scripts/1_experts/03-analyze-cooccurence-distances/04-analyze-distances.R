@@ -4,12 +4,7 @@ Sys.setenv(LANG = "en")
 # Working directory
 setwd("E:/Manuscripts/4_co-occurence") 
 
-library(lme4)
-library(multcomp)
 library(dplyr)
-library(picante)
-library(tibble)
-library(tidyr)
 
 ## ============================================================================================================ ##
 ## Analyze pairwise distances between co-occurring species based on phylogeny and trait data 
@@ -19,9 +14,7 @@ library(tidyr)
 ## Load data ##
 #--------------
 
-dat <- read.csv2("Data/1_experts/co-occurrences/cooccurrence_pairs.csv")
-
-
+dat <- read.csv2("Data/1_experts/co-occurrence/cooccurrence_pairs.csv")
 
 
 # Recovery gradient categories
@@ -47,31 +40,47 @@ dat$Label <- factor(
 
 dat$Label_ord<-ordered(dat$Label,c("A_P" , "A_C" , "F_P" , "F_C" , "F_P_RegI", "F_C_RegI", "A_Old" , "F_P_RegII", "F_C_RegII","F_Old"))
 
+# Only Reassembly plots
+dat_reassembly <- dat %>%
+  filter(startsWith(as.character(Label), "F_"))
+
 #--------------
 ## Analyze distances ##
 #--------------
 
-model_traits <- lmer(traits_distance ~ type + (1 | plot), data = dat)
-summary(model_traits)
+peak_mod<-lm(peak_distance ~ phylo_distance, dat)
+dat$peak_res<-residuals(peak_mod)
 
-model_peaks <- lmer(peak_distance ~ type + (1 | plot), data = dat)
-summary(model_peaks)
-cftest(model_peaks)
+traits_mod<-lm(traits_distance ~ phylo_distance, dat)
+dat$traits_res<-residuals(traits_mod)
 
-model_mass <- lmer(mass_distance ~ type + (1 | plot), data = dat)
-summary(model_mass)
-
-
-model_peaks_re <- lmer(
-  peak_distance ~ type + (1 | plot) + (1 | Label),
-  data = dat
-)
-summary(model_peaks_re)
-
-
-model_peaks_res <- lmer(peak_distance_phylo_corr ~ Label_ord*type + (1 | plot), data = dat)
+#modelle der residuen
+model_peaks_res <- lmer(peak_res ~ Label_ord*type + (1 | plot), data = dat)
 cftest(model_peaks_res)
 
-model_traits_res <- lmer(trait_distance_phylo_corr ~ Label_ord*type + (1 | plot), data = dat)
+model_traits_res <- lmer(traits_res ~ Label_ord*type + (1 | plot), data = dat)
 cftest(model_traits_res)
+
+# Peak and Trait distance corrected by phylogeny
+model_peak_phylo_corr <- lmer(peak_distance_phylo_corr ~ Label_ord*type + (1 | plot), data = dat)
+cftest(model_peak_phylo_corr)
+
+model_traits_phylo_corr <- lmer(trait_distance_phylo_corr ~ Label_ord*type + (1 | plot), data = dat)
+cftest(model_traits_phylo_corr)
+
+
+
+#alternative im modell gleich phylogeny als predictor
+model_peaks_phylo <- lmer(peak_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat)
+cftest(model_peaks_phylo)
+
+model_traits_phylo <- lmer(traits_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat)
+cftest(model_traits_phylo)
+
+
+model_peaks_phylo <- lmer(peak_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat_reassembly)
+cftest(model_peaks_phylo)
+
+model_traits_phylo <- lmer(traits_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat_reassembly)
+cftest(model_traits_phylo)
 

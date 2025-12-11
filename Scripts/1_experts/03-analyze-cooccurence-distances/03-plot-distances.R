@@ -98,7 +98,7 @@ p3 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = mass_distance, fi
 ggsave("Plots/1_experts/distances_gradient_boxplot/mass_distances_boxplot.png", plot = p3, width = 10, height = 6, dpi = 300)
 
 # Traits without body mass distance
-p3 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_wo_mass_distance, fill = type)) +
+p4 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_wo_mass_distance, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
@@ -114,10 +114,10 @@ p3 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_wo_mass_di
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/traits_wo_mass_distances_boxplot.png", plot = p3, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot/traits_wo_mass_distances_boxplot.png", plot = p4, width = 10, height = 6, dpi = 300)
 
 # Phylogenetic distance
-p4 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = phylo_distance, fill = type)) +
+p5 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = phylo_distance, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
@@ -133,10 +133,10 @@ p4 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = phylo_distance, f
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/phylo_distances_boxplot.png", plot = p4, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot/phylo_distances_boxplot.png", plot = p5, width = 10, height = 6, dpi = 300)
 
-# Peak frequency distance (residuals)
-p5 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_res, fill = type)) +
+# Peak frequency distance (phylo corrected)
+p6 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phylo_corr, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
@@ -152,10 +152,10 @@ p5 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_res, fill = 
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/peak_frequency_residuals_boxplot.png", plot = p5, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot/peak_frequency_phylo-corr_boxplot.png", plot = p6, width = 10, height = 6, dpi = 300)
 
-# Traits distance (residuals)
-p6 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_res, fill = type)) +
+# Traits distance (phylo corrected)
+p7 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_phylo_corr, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
@@ -171,7 +171,7 @@ p6 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_res, fill 
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/traits_residuals_boxplot.png", plot = p6, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot/traits_phylo-corr_boxplot.png", plot = p7, width = 10, height = 6, dpi = 300)
 
 
 
