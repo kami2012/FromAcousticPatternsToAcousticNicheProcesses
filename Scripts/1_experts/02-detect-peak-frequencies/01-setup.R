@@ -55,7 +55,12 @@ freq_combined <- tibble(species = species_xc) %>%  # create a tibble (data frame
 #--------------
 
 # *** STEP 1: CLEAN AND CONVERT SAGAR'S DATA ***
-sagar_freq <- sagar_freq %>%
+
+# Realms relevant for Ecuador's Chocó forest: 'neotropical' and 'panamanian'
+relevant_realms <- c("neotropical", "panamanian")
+
+sagar_freq_final <- sagar_freq %>%
+  filter(realm %in% relevant_realms) %>%
   mutate(
     # 1. Replace the comma (,) decimal separator with a period (.) in the dom.freq string
     dom.freq_clean = gsub(",", ".", dom.freq),
@@ -65,16 +70,18 @@ sagar_freq <- sagar_freq %>%
     dom_freq_hz = as.numeric(dom.freq_clean) * 1000,
     dom_freq_hz = round(dom_freq_hz, 2)
   ) %>%
-  # Keep only the required columns for the join
-  select(species, dom_freq_hz)
+  # Remove duplicates
+  group_by(species) %>%
+  summarise(
+    dom_freq_sagar = median(dom_freq_hz, na.rm = TRUE),
+    .groups = 'drop'
+  )
 
 # *** STEP 2: PERFORM THE JOIN ***
 freq_combined <- freq_combined %>%
   left_join(
     # Use the cleaned sagar_freq dataset
-    sagar_freq %>%
-      # Rename the corrected column
-      rename(dom_freq_sagar = dom_freq_hz),
+    sagar_freq_final,
     
     # Join on the matching scientific name columns
     by = c("scinam" = "species")

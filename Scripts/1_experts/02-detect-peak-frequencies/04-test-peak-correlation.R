@@ -42,10 +42,10 @@ write.csv2(freq_combined, "Data/1_experts/peak_frequency_detections/peak_frequen
 #--------------
 
 cor(freq_combined$peak_freq_mikula, freq_combined$peak_freq_kuemmet, use = "complete.obs", method = "spearman")
-# 0.9065544
+# 0.9000716
 
 cor(freq_combined$dom_freq_sagar, freq_combined$peak_freq_kuemmet, use = "complete.obs", method = "spearman")
-# 0.8024911
+# 0.8233517
 
 
 m <- ggplot(freq_combined, aes(x = peak_freq_mikula, y = peak_freq_kuemmet, label = scinam)) +
