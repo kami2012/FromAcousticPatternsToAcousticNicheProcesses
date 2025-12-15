@@ -1,0 +1,88 @@
+Plot_ID;Forest_1km;Distance_forest_m;Distance_edge_m;Latitude;Longitude;Elevation;Treatment1;Regeneration_year;Succession;Treatment2;Category7;Category4;History
+ACN1;;;;0,5574;-79,17967;168;active cacao;NA;0;cacao;Cacao;Agri;Cacao
+APN1;0,339163503;133,6940003;0;0,557148;-79,183566;128;pasture;;;;;Agri;
+APN2;0,492828041;75,24879285;0;0,551181;-79,194413;151;pasture;NA;0;pasture;Pasture;Agri;Pasture
+APW2;0,338336577;131,0331736;0;0,557169;-79,183546;128;pasture;NA;0;pasture;Pasture;Agri;Pasture
+CA59;0,35098764;66,69161594;0;0,557309976;-79,179868;350;active cacao;NA;0;cacao;Cacao;Agri;Cacao
+CA60;0,760646147;29,52865517;0;0,510266;-79,2272;440;active cacao;NA;0;cacao;Cacao;Agri;Cacao
+CA61;0,799027668;61,38808552;0;0,534000993;-79,18769603;293;active cacao;NA;0;cacao;Cacao;Agri;Cacao
+CA62;0,399628666;134,6975457;0;0,511048995;-79,212168;372;active cacao;NA;0;cacao;Cacao;Agri;Cacao
+CA63;0,83253144;144,1299125;0;0,544072017;-79,14537496;240;active cacao;NA;0;cacao;Cacao;Agri;Cacao
+CA64;0,70284292;35,0712228;0;0,543443961;-79,15454602;256;active cacao;NA;0;cacao;Cacao;Agri;Cacao
+CAZ01;0,085959223;101,6922938;0;0,412866;-79,259515;150;active cacao;NA;NA;;CA_M;Agri;
+CAZ05;0,024024007;326,5218218;0;0,426547;-79,24618;160;active cacao;NA;NA;;CA_M;Agri;
+CAZ07;0,058442681;184,4537451;0;0,399314;-79,25305;170;active cacao;NA;NA;;CA_M;Agri;
+CAZ12;0,016702856;812,219839;0;0,421661;-79,235676;167;active cacao;NA;NA;;CA_M;Agri;
+CAZ14;0,06089703;352,8156002;0;0,41128;-79,265714;148;active cacao;NA;NA;;CA_M;Agri;
+CAZ17;0,036217049;286,5132051;0;0,407272;-79,2509;163;active cacao;NA;NA;;CA_M;Agri;
+CR01;0,76807437;31,84108761;0;0,496584764;-79,17814275;560;cacao regeneration;2017;5;cacao regeneration;C_Reg_I;Reg1;Cacao
+CR02;0,900758443;36,42350615;0;0,501487004;-79,22595296;400;cacao regeneration;2021;2;cacao regeneration;C_Reg_I;Reg1;Cacao
+CR03;0,738820102;27,33081615;0;0,508255139;-79,23685488;250;cacao regeneration;2018;5;cacao regeneration;C_Reg_I;Reg1;Cacao
+CR04;0,948853854;62,51745776;0;0,51173321;-79,18950979;560;cacao regeneration;1987;36;cacao regeneration;C_Reg_II;Reg2;Cacao
+CR05;0,42639629;65,63923979;0;0,51179071;-79,20359239;377;cacao regeneration;2011;11;cacao regeneration;C_Reg_I;Reg1;Cacao
+CR06;0,53153469;29,05859309;0;0,520721963;-79,21059304;397;cacao regeneration;2003;19;cacao regeneration;C_Reg_I;Reg1;Cacao
+CR07;0,553962908;122,4729128;0;0,458986899;-79,2087108;168;cacao regeneration;2000;22;cacao regeneration;C_Reg_II;Reg2;Cacao
+CR08;0,521398245;49,99140008;0;0,45927;-79,21077;172;cacao regeneration;1996;26;cacao regeneration;C_Reg_II;Reg2;Cacao
+CR10;0,966667397;25,04409463;0;0,477182753;-79,19957402;347;cacao regeneration;1999;23;cacao regeneration;C_Reg_II;Reg2;Cacao
+CR11;0,899931305;39,1706175;0;0,477901585;-79,20506568;372;cacao regeneration;1992;30;cacao regeneration;C_Reg_II;Reg2;Cacao
+CR12;0,747632175;157,6304012;0;0,479973005;-79,21434;400;cacao regeneration;2008;14;cacao regeneration;C_Reg_I;Reg1;Cacao
+CR13;0,815680197;38,53006813;0;0,488968967;-79,22612546;311;cacao regeneration;2022;1;cacao regeneration;C_Reg_I;Reg1;Cacao
+CR14;0,986874092;12,29664486;0;0,498159975;-79,13848336;529;cacao regeneration;1985;38;cacao regeneration;C_Reg_II;Reg2;Cacao
+CR16;0,857219467;43,87424496;0;0,51079276;-79,14442671;479;cacao regeneration;2015;7;cacao regeneration;C_Reg_I;Reg1;Cacao
+CR17;0,873523474;49,1178021;0;0,514731333;-79,14412027;450;cacao regeneration;2014;8;cacao regeneration;C_Reg_I;Reg1;Cacao
+CR18;0,850864912;22,70812874;0;0,541664;-79,144756;270;cacao regeneration;2013;10;cacao regeneration;C_Reg_I;Reg1;Cacao
+OG11_old;0,801010359;0;370;0,488081;-79,218927;514;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG37;0,749878309;0;122;0,498206494;-79,1791925;550;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG38;0,852214494;0;221;0,513161989;-79,19323403;535;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG39;0,967092849;0;780;0,521560907;-79,19537184;576;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG40;0,989326469;0;726;0,527762929;-79,1723843;531;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG41;0,86414072;0;226;0,52989604;-79,18850798;389;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG42;0,782544128;0;192;0,538493693;-79,17462629;374;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG43;0,683264632;0;147;0,464510573;-79,2100058;238;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG44;0,935106577;0;302;0,474365344;-79,19811012;339;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG45;0,931983404;0;35;0,477782981;-79,20370404;362;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG46;0,981303356;0;463;0,478052963;-79,19470296;260;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG47;0,748915139;0;81;0,483218981;-79,21519504;450;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG48;0,999064529;0;949;0,531208981;-79,14474397;299;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG49;0,990437278;0;862;0,531383995;-79,14797897;310;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG50;0,932835298;0;614;0,534413969;-79,14397401;316;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG51;0,875939345;0;413;0,552252671;-79,13747267;228;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OG52;0,884065024;0;410;0,54574253;-79,13757074;225;old-growth forest;NA;50;old-growth forest;Oldgrowth;Old;Old
+OGZ04;0,05133435;0;40;0,409508;-79,253342;160;old-growth forest;NA;NA;;OG_M;Old;
+OGZ09;0,055403737;0;27;0,395029;-79,25339;170;old-growth forest;NA;NA;;OG_M;Old;
+OGZ10;0,060971495;0;49;0,433639;-79,235779;165;old-growth forest;NA;NA;;OG_M;Old;
+OGZ13;0,075778773;0;46;0,423632;-79,261471;145;old-growth forest;NA;NA;;OG_M;Old;
+OGZ20;0,336738837;0;87;0,461047;-79,1438;172;old-growth forest;NA;NA;;OG_M;Old;
+OGZ21;0,18423179;0;82;0,377547;-79,155161;170;old-growth forest;NA;NA;;OG_M;Old;
+OGZ22;0,48748202;0;29;0,466516;-79,098848;180;old-growth forest;NA;NA;;OG_M;Old;
+OGZ23;0,415721294;0;67;0,456369;-79,114619;180;old-growth forest;NA;NA;;OG_M;Old;
+OGZ25;0,336477826;0;30;0,456803;-79,13897;180;old-growth forest;NA;NA;;OG_M;Old;
+PA53;0,874074714;73,27675957;0;0,495852018;-79,20737699;510;pasture;NA;0;pasture;Pasture;Agri;Pasture
+PA54;0,775311576;82,2356376;0;0,53693;-79,18835;207;pasture;NA;0;pasture;Pasture;Agri;Pasture
+PA55;0,921137347;8,250148027;0;0,497629149;-79,22451722;350;pasture;NA;0;pasture;Pasture;Agri;Pasture
+PA56;0,759158803;65,60311531;0;0,511023;-79,228523;430;pasture;NA;0;pasture;Pasture;Agri;Pasture
+PA57;0,321908735;14,10628196;0;0,511013;-79,20914;375;pasture;NA;0;pasture;Pasture;Agri;Pasture
+PA58;0,716294695;40,25523651;0;0,543056;-79,153322;243;pasture;NA;0;pasture;Pasture;Agri;Pasture
+PAZ03;0,065823493;268,6414717;0;0,405142;-79,253342;180;pasture;NA;NA;;PA_M;Agri;
+PAZ07;0,03640248;451,3269895;0;0,390332;-79,254313;172;pasture;NA;NA;;PA_M;Agri;
+PAZ11;0,061351694;119,7732251;0;0,427912;-79,236187;166;pasture;NA;NA;;PA_M;Agri;
+PAZ15;0,068528088;144,1356513;0;0,405708;-79,265578;160;pasture;NA;NA;;PA_M;Agri;
+PAZ18;0,027311607;227,5285241;0;0,417119;-79,216108;173;pasture;NA;NA;;PA_M;Agri;
+PR19;0,371143911;56,77059961;0;0,552738821;-79,17480114;177;pasture regeneration;2017;5;pasture regeneration;P_Reg_I;Reg1;Pasture
+PR20;0,733607219;127,8666031;0;0,496644;-79,171518;540;pasture regeneration;;;;;;
+PR21;0,934209178;0;254;0,508066043;-79,18989812;560;pasture regeneration;1987;35;pasture regeneration;P_Reg_II;Reg2;Pasture
+PR21WUE;0,954215085;0;526;0,502809;-79,187005;563;pasture regeneration;1987;35;pasture regeneration;P_Reg_II;Reg2;Pasture
+PR22;0,424460914;105,8188659;0;0,509381583;-79,20450795;400;pasture regeneration;2011;11;pasture regeneration;P_Reg_I;Reg1;Pasture
+PR23;0,772709233;30,92214386;0;0,510838861;-79,23202079;415;pasture regeneration;2022;1;pasture regeneration;P_Reg_I;Reg1;Pasture
+PR24;0,542955538;22,19631397;0;0,52084065;-79,21367372;381;pasture regeneration;2002;20;pasture regeneration;P_Reg_I;Reg1;Pasture
+PR25;0,782099784;201,5191044;0;0,495578432;-79,17639714;544;pasture regeneration;2013;9;pasture regeneration;P_Reg_I;Reg1;Pasture
+PR26;0,935480115;25,02999277;0;0,526453592;-79,20466318;325;pasture regeneration;2001;21;pasture regeneration;P_Reg_II;Reg2;Pasture
+PR27;0,643316891;50,1979161;0;0,46173;-79,20934;214;pasture regeneration;1996;26;pasture regeneration;P_Reg_II;Reg2;Pasture
+PR28;0,626996082;0;85;0,46443304;-79,21261308;224;pasture regeneration;2003;19;pasture regeneration;P_Reg_I;Reg1;Pasture
+PR29;0,363754891;32,22038017;0;0,472908653;-79,23061581;173;pasture regeneration;2017;6;pasture regeneration;P_Reg_I;Reg1;Pasture
+PR30;0,433451122;41,53222265;0;0,475033466;-79,22911587;219;pasture regeneration;2011;12;pasture regeneration;P_Reg_I;Reg1;Pasture
+PR31;0,754348219;39,34879655;0;0,479071783;-79,21007127;316;pasture regeneration;1999;23;pasture regeneration;P_Reg_II;Reg2;Pasture
+PR32;0,689523125;174,449303;0;0,479219975;-79,21736;339;pasture regeneration;1997;25;pasture regeneration;P_Reg_II;Reg2;Pasture
+PR33;0,735997781;22,11103378;0;0,489268117;-79,22841179;311;pasture regeneration;2022;1;pasture regeneration;P_Reg_I;Reg1;Pasture
+PR34;0,943013154;24,54013944;0;0,49351112;-79,13792672;615;pasture regeneration;1985;38;pasture regeneration;P_Reg_II;Reg2;Pasture
+PR36;0,876933799;35,06537855;0;0,516520282;-79,1430608;380;pasture regeneration;2014;8;pasture regeneration;P_Reg_I;Reg1;Pasture

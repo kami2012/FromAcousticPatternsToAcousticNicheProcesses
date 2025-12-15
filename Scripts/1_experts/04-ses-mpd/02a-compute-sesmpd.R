@@ -17,7 +17,7 @@ library(picante)
 #--------------
 
 dat <- read.csv2("Data/1_experts/co-occurrences/cooccurrence_pairs.csv") # co-occurence pairs and distances
-species_pool <- read.csv("Data/1_experts/bird_presence_absence_per_file.csv")
+species_pool <- read.csv2("Data/1_experts/bird_presence_absence_per_file.csv")
 
 # Recovery gradient categories
 plot_categories <- read.csv("Data/plot_categories.csv", header=T, check.names = F)

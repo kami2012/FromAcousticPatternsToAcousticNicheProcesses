@@ -17,23 +17,24 @@ library(dplyr)
 ## Load data ##
 #--------------
 
-load("Data/1_experts/co-occurrences/results_cooccurrence.RData") # cooccurrence pairs
+load("Data/1_experts/co-occurrence/cooccurrence_results.RData") # cooccurrence pairs
 
 # Distance matrices
-dist_trait <- read.csv2("Data/1_experts/dist_matrices/dist_traits_matrix_144.csv", row.names = 1)
-dist_peak <- read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix_144.csv", row.names = 1) # peak frequencies
-dist_mass <- read.csv2("Data/1_experts/dist_matrices/dist_mass_matrix_144.csv", row.names = 1) # body mass
-dist_traits_wo_mass <- read.csv2("Data/1_experts/dist_matrices/dist_traits_wo_mass_matrix_144.csv", row.names = 1) # Gower distance trait matrix (ecological and morphological traits) without body mass
-dist_phylo <- read.csv2("Data/1_experts/dist_matrices/dist_phylogeny_144.csv", row.names = 1)
-res_mat <- read.csv2("Data/1_experts/dist_matrices/dist_trait_matrix_phylo_corrected_144.csv", row.names = 1)
-res_peak <- read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix_phylo_corrected_144.csv", row.names = 1)
+load("Data/1_experts/dist_matrices/distM.rda") # Traits
+dist_traits <- distM
+dist_peak <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix.csv", row.names = 1)) # peak frequencies
+dist_mass <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_mass_matrix.csv", row.names = 1)) # body mass
+dist_traits_wo_mass <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_traits_wo_mass_matrix.csv", row.names = 1)) # Gower distance trait matrix (ecological and morphological traits) without body mass
+dist_phylo <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_phylogeny.csv", row.names = 1)) 
+dist_traits_phylo_corr <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_trait_matrix_phylo_corrected.csv", row.names = 1))
+dist_peak_phylo_corr <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix_phylo_corrected.csv", row.names = 1))
 
 #--------------
-## Filter significant co-occurence results ##
+## Filter significant co-occurrence results ##
 #--------------
 
-cooccurrence_pairs <- map_dfr(names(results_cooccurence), function(p) {
-  res <- results_cooccurence[[p]]$results
+cooccurrence_pairs <- map_dfr(names(results_cooccurrence), function(p) {
+  res <- results_cooccurrence[[p]]$results
   if (is.null(res)) return(NULL)
   res %>%
     dplyr::filter(p_lt <= 0.05 | p_gt <= 0.05) %>%
@@ -42,7 +43,6 @@ cooccurrence_pairs <- map_dfr(names(results_cooccurence), function(p) {
     mutate(type = as.character(type)) %>%   # ensure consistent type
     dplyr::select(plot, sp1_name, sp2_name, type, p_lt, p_gt)
 })
-
 
 extract_dist <- function(mat, sp1, sp2) {
   rn <- rownames(mat)
@@ -55,7 +55,7 @@ extract_dist <- function(mat, sp1, sp2) {
 }
 
 cooccurrence_pairs$traits_distance <-
-  mapply(extract_dist, mat = list(dist_trait),
+  mapply(extract_dist, mat = list(dist_traits),
          sp1 = cooccurrence_pairs$sp1_name,
          sp2 = cooccurrence_pairs$sp2_name)
 
@@ -80,14 +80,14 @@ cooccurrence_pairs$phylo_distance <-
          sp2 = cooccurrence_pairs$sp2_name)
 
 cooccurrence_pairs$trait_distance_phylo_corr <-
-  mapply(extract_dist, mat = list(res_mat),
+  mapply(extract_dist, mat = list(dist_traits_phylo_corr),
          sp1 = cooccurrence_pairs$sp1_name,
          sp2 = cooccurrence_pairs$sp2_name)
 
 cooccurrence_pairs$peak_distance_phylo_corr <-
-  mapply(extract_dist, mat = list(res_peak),
+  mapply(extract_dist, mat = list(dist_peak_phylo_corr),
          sp1 = cooccurrence_pairs$sp1_name,
          sp2 = cooccurrence_pairs$sp2_name)
 
-write.csv2(cooccurrence_pairs, "Data/1_experts/co-occurrences/cooccurrence_pairs.csv", row.names = FALSE)
+write.csv2(cooccurrence_pairs, "Data/1_experts/co-occurrence/cooccurrence_pairs_distances.csv", row.names = FALSE)
 

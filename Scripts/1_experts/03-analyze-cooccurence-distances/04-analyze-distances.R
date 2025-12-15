@@ -5,6 +5,8 @@ Sys.setenv(LANG = "en")
 setwd("E:/Manuscripts/4_co-occurence") 
 
 library(dplyr)
+library(lme4)
+library(multcomp)
 
 ## ============================================================================================================ ##
 ## Analyze pairwise distances between co-occurring species based on phylogeny and trait data 
@@ -14,15 +16,15 @@ library(dplyr)
 ## Load data ##
 #--------------
 
-dat <- read.csv2("Data/1_experts/co-occurrence/cooccurrence_pairs.csv")
-
+dat_kuemmet <- read.csv2("Data/1_experts/co-occurrence/cooccurrence_pairs_distances_kuemmet.csv")
+dat_sagar <- read.csv2("Data/1_experts/co-occurrence/cooccurrence_pairs_distances_sagar.csv")
 
 # Recovery gradient categories
 plot_categories <- read.csv("Data/plot_categories.csv", header=T, check.names = F)
 plot_categories <- plot_categories[, 1:7]
 
-dat <- merge(
-  dat ,
+dat_kuemmet <- merge(
+  dat_kuemmet ,
   plot_categories[, c("Plot_ID", "Label")],   
   by.x = "plot",                         
   by.y = "Plot_ID",                      
@@ -30,18 +32,38 @@ dat <- merge(
 )
 
 # Set factor levels of 'Label' to reflect the recovery gradient ##
-dat$Label <- factor(
-  dat$Label,
+dat_kuemmet$Label <- factor(
+  dat_kuemmet$Label,
   levels = c("A_P", "A_C", "F_P", 
              "F_C", "F_P_RegI", "F_C_RegI", "A_Old",
              "F_P_RegII", "F_C_RegII", "F_Old"
   )
 )
 
-dat$Label_ord<-ordered(dat$Label,c("A_P" , "A_C" , "F_P" , "F_C" , "F_P_RegI", "F_C_RegI", "A_Old" , "F_P_RegII", "F_C_RegII","F_Old"))
+dat_kuemmet$Label_ord<-ordered(dat_kuemmet$Label,c("A_P" , "A_C" , "F_P" , "F_C" , "F_P_RegI", "F_C_RegI", "A_Old" , "F_P_RegII", "F_C_RegII","F_Old"))
+
+
+dat_sagar <- merge(
+  dat_sagar ,
+  plot_categories[, c("Plot_ID", "Label")],   
+  by.x = "plot",                         
+  by.y = "Plot_ID",                      
+  all.x = TRUE                           
+)
+
+# Set factor levels of 'Label' to reflect the recovery gradient ##
+dat_sagar$Label <- factor(
+  dat_sagar$Label,
+  levels = c("A_P", "A_C", "F_P", 
+             "F_C", "F_P_RegI", "F_C_RegI", "A_Old",
+             "F_P_RegII", "F_C_RegII", "F_Old"
+  )
+)
+
+dat_sagar$Label_ord<-ordered(dat_sagar$Label,c("A_P" , "A_C" , "F_P" , "F_C" , "F_P_RegI", "F_C_RegI", "A_Old" , "F_P_RegII", "F_C_RegII","F_Old"))
 
 # Only Reassembly plots
-dat_reassembly <- dat %>%
+dat_sagar_reassembly <- dat_sagar %>%
   filter(startsWith(as.character(Label), "F_"))
 
 #--------------
@@ -71,14 +93,23 @@ cftest(model_traits_phylo_corr)
 
 
 #alternative im modell gleich phylogeny als predictor
-model_peaks_phylo <- lmer(peak_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat)
+model_peaks_phylo <- lmer(peak_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat_kuemmet)
 cftest(model_peaks_phylo)
 
-model_traits_phylo <- lmer(traits_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat)
+model_traits_phylo <- lmer(traits_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat_kuemmet)
 cftest(model_traits_phylo)
 
 
-model_peaks_phylo <- lmer(peak_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat_reassembly)
+
+model_peaks_phylo <- lmer(peak_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat_sagar)
+cftest(model_peaks_phylo)
+
+model_traits_phylo <- lmer(traits_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat_sagar)
+cftest(model_traits_phylo)
+
+
+
+model_peaks_phylo <- lmer(peak_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat_sagar_reassembly)
 cftest(model_peaks_phylo)
 
 model_traits_phylo <- lmer(traits_distance ~ Label_ord*type + phylo_distance + (1 | plot), data = dat_reassembly)

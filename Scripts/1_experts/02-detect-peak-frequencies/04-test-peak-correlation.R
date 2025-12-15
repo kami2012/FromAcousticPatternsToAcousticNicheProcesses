@@ -15,7 +15,7 @@ library(ggrepel)
 ## Load data ##
 #--------------
 
-mean_peak_frequency <- read.csv2("Data/1_experts/peak_frequency_detections/data_from_xeno-canto/mean_peak_frequency.csv")
+mean_peak_frequency <- read.csv2("Data/1_experts/peak_frequency_detections/data_from_xeno-canto/median_peak_frequency.csv")
 freq_combined <- read.csv2("Data/1_experts/peak_frequency_detections/peak_frequencies_mikula_sagar.csv")
 
 #--------------
@@ -27,7 +27,7 @@ freq_combined <- freq_combined %>%
   left_join(
     # The right table: Select and rename columns from mean_peak_frequency
     mean_peak_frequency %>%
-      select(full_name, median_peak) %>% # Select the two columns needed
+      dplyr::select(full_name, median_peak) %>% # Select the two columns needed
       rename(peak_freq_kuemmet = median_peak), # Rename the frequency column for clarity
     # The join condition: Match 'scinam' in freq_combined to 'species' in sagar_freq
     by = c("scinam" = "full_name")

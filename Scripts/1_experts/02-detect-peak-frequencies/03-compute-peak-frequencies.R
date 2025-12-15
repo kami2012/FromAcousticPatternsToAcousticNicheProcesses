@@ -97,6 +97,6 @@ peak_frequencies_xc_median <- peak_data %>%
     xc_record_count = sum(!is.na(peak_freq_hz))
   )
 
-write.csv2(peak_frequencies_xc_median, "Data/1_experts/peak_frequency_detections/data_from_xeno-canto/mean_peak_frequency.csv", row.names = FALSE)
+write.csv2(peak_frequencies_xc_median, "Data/1_experts/peak_frequency_detections/data_from_xeno-canto/median_peak_frequency.csv", row.names = FALSE)
 
 

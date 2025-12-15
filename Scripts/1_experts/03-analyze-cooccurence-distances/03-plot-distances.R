@@ -13,7 +13,7 @@ setwd("E:/Manuscripts/4_co-occurence")
 ## Load data ##
 #--------------
 
-cooccurrence_pairs <- read.csv2("Data/1_experts/co-occurrences/cooccurrence_pairs.csv")
+cooccurrence_pairs <- read.csv2("Data/1_experts/co-occurrence/cooccurrence_pairs_distances_sagar.csv")
 
 # Recovery gradient categories
 plot_categories <- read.csv("Data/plot_categories.csv", header=T, check.names = F)
@@ -57,7 +57,7 @@ p1 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_distance, 
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/trait_distances_boxplot.png", plot = p1, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/trait_distances_boxplot.png", plot = p1, width = 10, height = 6, dpi = 300)
 
 # Peak frequency distance
 p2 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance, fill = type)) +
@@ -76,7 +76,7 @@ p2 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance, fi
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/peak_distances_boxplot.png", plot = p2, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/peak_distances_boxplot.png", plot = p2, width = 10, height = 6, dpi = 300)
 
 # Body mass distance
 p3 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = mass_distance, fill = type)) +
@@ -95,7 +95,7 @@ p3 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = mass_distance, fi
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/mass_distances_boxplot.png", plot = p3, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/mass_distances_boxplot.png", plot = p3, width = 10, height = 6, dpi = 300)
 
 # Traits without body mass distance
 p4 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_wo_mass_distance, fill = type)) +
@@ -114,7 +114,7 @@ p4 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_wo_mass_di
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/traits_wo_mass_distances_boxplot.png", plot = p4, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/traits_wo_mass_distances_boxplot.png", plot = p4, width = 10, height = 6, dpi = 300)
 
 # Phylogenetic distance
 p5 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = phylo_distance, fill = type)) +
@@ -133,7 +133,7 @@ p5 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = phylo_distance, f
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/phylo_distances_boxplot.png", plot = p5, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/phylo_distances_boxplot.png", plot = p5, width = 10, height = 6, dpi = 300)
 
 # Peak frequency distance (phylo corrected)
 p6 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phylo_corr, fill = type)) +
@@ -152,7 +152,7 @@ p6 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phy
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/peak_frequency_phylo-corr_boxplot.png", plot = p6, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/peak_frequency_phylo-corr_boxplot.png", plot = p6, width = 10, height = 6, dpi = 300)
 
 # Traits distance (phylo corrected)
 p7 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_phylo_corr, fill = type)) +
@@ -171,7 +171,7 @@ p7 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_ph
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot/traits_phylo-corr_boxplot.png", plot = p7, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/traits_phylo-corr_boxplot.png", plot = p7, width = 10, height = 6, dpi = 300)
 
 
 

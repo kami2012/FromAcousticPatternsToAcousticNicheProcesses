@@ -1,0 +1,113 @@
+rm(list=ls(all=TRUE))
+Sys.setenv(LANG = "en")
+
+# Working directory
+setwd("E:/Manuscripts/4_co-occurence") 
+
+library(dplyr)
+
+## ============================================================================================================ ##
+## Test the Acoustic Adaptation Hypothesis 
+
+
+#--------------
+## Load data ##
+#--------------
+
+species_pool <- read.csv2("Data/1_experts/bird_presence_absence_per_file.csv")
+peak_frequencies <- read.csv2("Data/1_experts/peak_frequency_detections/peak_frequencies_mikula_sagar_kuemmet.csv")
+mapping <- read.csv2("Data/1_experts/bird_name_mapping_experts_xeno-canto.csv")
+
+#--------------
+## Prepare peak frequency  ##
+#--------------
+
+peak_frequencies$peak_freq_sagar_kuemmet <- ifelse(
+  !is.na(peak_frequencies$dom_freq_sagar),  # condition: If Sagar's data is available
+  peak_frequencies$dom_freq_sagar,          # if TRUE: Use Sagar's data
+  peak_frequencies$peak_freq_kuemmet        # else: Use Kuemmet's data
+)
+
+# Remove all species that lack a frequency value (Ara ambiguus) 
+peak_frequencies <- peak_frequencies[!is.na(peak_frequencies$peak_freq_sagar_kuemmet), ]
+
+# Convert peak_freq_sagar_kuemmet to numeric
+peak_frequencies$peak_freq_sagar_kuemmet <- as.numeric(gsub(",", ".", peak_frequencies$peak_freq_sagar_kuemmet))
+
+# Replace spaces with underscores in mapping
+mapping$ExpertName <- gsub(" ", "_", mapping$ExpertName)
+mapping$XenoCantoName <- gsub(" ", "_", mapping$XenoCantoName)
+
+peak_frequencies$scinam <- gsub(" ", "_", peak_frequencies$scinam)
+
+# Remap scinam using mapping: XenoCantoName → ExpertName
+idx <- match(peak_frequencies$scinam, mapping$XenoCantoName)
+valid <- !is.na(idx)
+peak_frequencies$scinam[valid] <- mapping$ExpertName[idx[valid]]
+
+
+#--------------
+## Prepare peak frequency lookup table ##
+#--------------
+
+peak_frequencies_map <- peak_frequencies %>%
+  dplyr::select(scinam, peak_freq_sagar_kuemmet) %>%
+  distinct()
+
+#--------------
+## Lookup peak frequencies ##
+#--------------
+
+long_freq_data <- species_pool %>%
+  dplyr::select(-filename) %>%
+  tidyr::pivot_longer(
+    cols = -plot,
+    names_to = "scinam",
+    values_to = "presence"
+  ) %>%
+  dplyr::filter(presence == 1) %>%
+  left_join(
+    peak_frequencies_map,
+    by = c("scinam" = "scinam") 
+  ) %>%
+  filter(!is.na(peak_freq_sagar_kuemmet))
+
+
+# --- (Unique) species per plot (unweighted mean) ---
+
+mean_unweighted <- long_freq_data %>%
+  dplyr::distinct(plot, scinam, .keep_all = TRUE) %>% 
+  group_by(plot) %>%
+  summarise(
+    mean_freq_UNWEIGHTED = mean(peak_freq_sagar_kuemmet),
+    sd_freq_UNWEIGHTED = sd(peak_freq_sagar_kuemmet),
+    num_unique_species = n() 
+  )
+
+
+# --- (All) detections per plot (weighted mean) ---
+
+mean_weighted <- long_freq_data %>%
+  group_by(plot) %>%
+  summarise(
+    mean_freq_WEIGHTED = mean(peak_freq_sagar_kuemmet),
+    sd_freq_WEIGHTED = sd(peak_freq_sagar_kuemmet),
+    num_total_detections = n() 
+  )
+
+
+# --- Aggregate results ---
+
+plot_mean_peak_freq_combined <- mean_unweighted %>%
+  left_join(mean_weighted, by = "plot")
+  
+  
+write.csv2(plot_mean_peak_freq_combined, "Data/1_experts/mean_peak_frequency_per_plot.csv", row.names = FALSE) 
+  
+  
+  
+  
+  
+  
+  
+  
