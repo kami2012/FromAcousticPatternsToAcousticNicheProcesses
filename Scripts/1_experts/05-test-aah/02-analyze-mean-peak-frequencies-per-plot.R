@@ -16,7 +16,7 @@ library(multcomp)
 ## Load data ##
 #--------------
 
-dat <- read.csv2("Data/1_experts/mean_peak_frequency_per_plot.csv")
+dat <- read.csv2("Data/1_experts/mean_peak_frequency_per_plot_mass_corrected.csv")
 
 # Load recovery gradient categories
 plot_categories <- read.csv("Data/plot_categories.csv", header=T, check.names = F)
@@ -54,7 +54,7 @@ dat <- merge(
 )
 
 
-write.csv2(dat, "Data/1_experts/mean_peak_frequency_per_plot_gradient_succession.csv", row.names = FALSE) 
+write.csv2(dat, "Data/1_experts/mean_peak_frequency_per_plot_mass_corrected_gradient_succession.csv", row.names = FALSE) 
 
 # Filter Reassembly plots
 dat_reassembly <- dat %>%
@@ -67,6 +67,14 @@ summary(model_mean_freq_succ)
 
 model_sd_freq_succ <- lm (sd_freq_UNWEIGHTED ~ Succession, data = dat_reassembly)
 summary(model_sd_freq_succ)
+
+plot(model_sd_freq_succ, which = 1) # Residuals vs Fitted
+plot(model_sd_freq_succ, which = 4) # Cook's Distance
+
+model_check <- lm(sd_freq_UNWEIGHTED ~ Succession + num_unique_species, data = dat_reassembly)
+summary(model_check)
+
+anova(model_sd_freq_succ, model_check)
 
 
 model_mean_freq_gradient <- lm(mean_freq_UNWEIGHTED ~ Label_ord, data = dat)

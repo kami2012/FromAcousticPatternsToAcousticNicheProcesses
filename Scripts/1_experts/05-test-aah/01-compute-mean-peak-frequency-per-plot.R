@@ -17,6 +17,8 @@ library(dplyr)
 species_pool <- read.csv2("Data/1_experts/bird_presence_absence_per_file.csv")
 peak_frequencies <- read.csv2("Data/1_experts/peak_frequency_detections/peak_frequencies_mikula_sagar_kuemmet.csv")
 mapping <- read.csv2("Data/1_experts/bird_name_mapping_experts_xeno-canto.csv")
+traits <- read.csv2("Data/1_experts/traits_phylo/CommunityAllplots334BirdSpecies_TraitsAvonet.csv")
+
 
 #--------------
 ## Prepare peak frequency  ##
@@ -55,6 +57,19 @@ peak_frequencies_map <- peak_frequencies %>%
   distinct()
 
 #--------------
+## Correct peak frequency for mass ##
+#--------------
+
+peak_frequencies_map <- peak_frequencies_map %>%
+  left_join(
+    traits %>% dplyr::select(Name.Phylogeny.Latin, Mass), 
+    by = c("scinam" = "Name.Phylogeny.Latin")
+  )
+
+model <- lm(log10(peak_freq_sagar_kuemmet) ~ log10(Mass), data = peak_frequencies_map)
+peak_frequencies_map$freq_resid <- resid(model)
+
+#--------------
 ## Lookup peak frequencies ##
 #--------------
 
@@ -70,7 +85,7 @@ long_freq_data <- species_pool %>%
     peak_frequencies_map,
     by = c("scinam" = "scinam") 
   ) %>%
-  filter(!is.na(peak_freq_sagar_kuemmet))
+  filter(!is.na(freq_resid))
 
 
 # --- (Unique) species per plot (unweighted mean) ---
@@ -79,8 +94,8 @@ mean_unweighted <- long_freq_data %>%
   dplyr::distinct(plot, scinam, .keep_all = TRUE) %>% 
   group_by(plot) %>%
   summarise(
-    mean_freq_UNWEIGHTED = mean(peak_freq_sagar_kuemmet),
-    sd_freq_UNWEIGHTED = sd(peak_freq_sagar_kuemmet),
+    mean_freq_UNWEIGHTED = mean(freq_resid),
+    sd_freq_UNWEIGHTED = sd(freq_resid),
     num_unique_species = n() 
   )
 
@@ -90,8 +105,8 @@ mean_unweighted <- long_freq_data %>%
 mean_weighted <- long_freq_data %>%
   group_by(plot) %>%
   summarise(
-    mean_freq_WEIGHTED = mean(peak_freq_sagar_kuemmet),
-    sd_freq_WEIGHTED = sd(peak_freq_sagar_kuemmet),
+    mean_freq_WEIGHTED = mean(freq_resid),
+    sd_freq_WEIGHTED = sd(freq_resid),
     num_total_detections = n() 
   )
 
@@ -102,7 +117,7 @@ plot_mean_peak_freq_combined <- mean_unweighted %>%
   left_join(mean_weighted, by = "plot")
   
   
-write.csv2(plot_mean_peak_freq_combined, "Data/1_experts/mean_peak_frequency_per_plot.csv", row.names = FALSE) 
+write.csv2(plot_mean_peak_freq_combined, "Data/1_experts/mean_peak_frequency_per_plot_mass_corrected.csv", row.names = FALSE) 
   
   
   

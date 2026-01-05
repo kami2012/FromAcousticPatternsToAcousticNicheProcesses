@@ -15,7 +15,7 @@ library(dplyr)
 ## Load data ##
 #--------------
 
-dat <- read.csv2("Data/1_experts/mean_peak_frequency_per_plot_gradient_succession.csv")
+dat <- read.csv2("Data/1_experts/mean_peak_frequency_per_plot_mass_corrected_gradient_succession.csv")
 
 
 #--------------
@@ -43,6 +43,7 @@ summary_sd_succ_plot <- summary(model_sd_succ_plot)
 
 model_mean_succ_plot <- lm (mean_freq_UNWEIGHTED ~ Succession, data = dat_succession)
 summary_mean_succ_plot <- summary(model_mean_succ_plot)
+
 
 
 #--------------
@@ -75,8 +76,8 @@ plot_aah_sd <- ggplot(dat_succession, aes(x = Succession, y = sd_freq_UNWEIGHTED
   # D) Labels and titles
   labs(
     x = "Succession Time (Years)",
-    y = "Acoustic Diversity (SD Peak Freq. in Hz)",
-    title = "Acoustic Diversity vs. Succession Time",
+    y = "Acoustic Diversity (SD of Mass-corrected Peak Freq.)",
+    title = "Acoustic Diversity (Mass-corrected) vs. Succession Time",
     subtitle = paste0("Linear Regression (excluding F_Old): R2=", 
                       round(summary_sd_succ_plot$r.squared, 3), 
                       ", p=", 
@@ -94,7 +95,7 @@ plot_aah_sd <- ggplot(dat_succession, aes(x = Succession, y = sd_freq_UNWEIGHTED
 
 plot_final_sd <- plot_aah_sd + theme_classic()
 
-ggsave("Plots/1_experts/aah/acoustiv_diversity_vs_succession_time.png", plot = plot_final_sd, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/aah/acoustiv_diversity_vs_succession_time_mass_corrected.png", plot = plot_final_sd, width = 10, height = 6, dpi = 300)
 
 
 
@@ -124,8 +125,8 @@ plot_aah_mean <- ggplot(dat_succession, aes(x = Succession, y = mean_freq_UNWEIG
   # D) Labels and titles
   labs(
     x = "Succession Time (Years)",
-    y = "Mean Peak Freq. in Hz",
-    title = "Peak Frequency vs. Succession Time",
+    y = "Mean Peak Freq. (Mass-corrected)",
+    title = "Peak Frequency (Mass-corrected) vs. Succession Time",
     subtitle = paste0("Linear Regression (excluding F_Old): R2=", 
                       round(summary_mean_succ_plot$r.squared, 3), 
                       ", p=", 
@@ -143,4 +144,4 @@ plot_aah_mean <- ggplot(dat_succession, aes(x = Succession, y = mean_freq_UNWEIG
 
 plot_final_mean <- plot_aah_mean + theme_classic()
 
-ggsave("Plots/1_experts/aah/peak_frequency_vs_succession_time.png", plot = plot_final_mean, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/aah/peak_frequency_vs_succession_time_mass_corrected.png", plot = plot_final_mean, width = 10, height = 6, dpi = 300)

@@ -16,7 +16,7 @@ library("stringr")
 ## Load data ##
 #--------------
 
-data_complete <- read.table("Data/4_birdnet_retrained/threshold_05/birdNET_retrained_threshold05.csv", header=T, check.names = F, sep=";")
+data_complete <- read.table("Data/3_birdnet/threshold_09/birdNET_threshold09.csv", header=T, check.names = F, sep=";")
 
 # Remove plots with all zero values (ACN1) and plots without context information (CR16)
 data_filtered <- data_complete[!data_complete$plot %in% c("ACN1", "CR16"), ] # => 85 plots
@@ -24,7 +24,7 @@ data_filtered <- data_complete[!data_complete$plot %in% c("ACN1", "CR16"), ] # =
 # Replace spaces with underscores
 colnames(data_filtered)[3:ncol(data_filtered)] <- gsub(" ", "_", colnames(data_filtered)[3:ncol(data_filtered)])
 
-plot_categories <- read.csv("Data/categories_nmds1.csv", header=T, check.names = F)
+plot_categories <- read.csv("Data/plot_categories.csv", header=T, check.names = F)
 plot_categories <- plot_categories[, 1:7]
 
 
