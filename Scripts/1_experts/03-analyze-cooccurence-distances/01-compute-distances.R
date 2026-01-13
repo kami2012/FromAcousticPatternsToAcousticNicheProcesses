@@ -223,6 +223,51 @@ res_peak[lower.tri(res_peak)] <- t(res_peak)[lower.tri(res_peak)]
 
 write.csv2(res_peak, "Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix_phylo_corrected.csv", row.names = TRUE)
 
+#--------------
+## Compute peak distances corrected for body mass ##
+#--------------
+
+dist_peak <- read.csv2("Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix.csv", row.names = 1)
+dist_mass <- read.csv2("Data/1_experts/dist_matrices/dist_mass_matrix.csv", row.names = 1)
+
+# Exclude species that have no peak frequencies
+exclude_species <- c("Ara_ambiguus")
+
+# Remove from mass distance matrix
+dist_mass <- dist_mass[!rownames(dist_mass) %in% exclude_species, 
+                       !colnames(dist_mass) %in% exclude_species]
+
+# Check, if rows match
+all(rownames(dist_mass) == rownames(dist_peak))
+
+# Check, if columns match
+all(colnames(dist_mass) == colnames(dist_peak))
+
+species <- colnames(dist_mass)
+
+# Flatten only upper triangle (excluding diagonal)
+y <- dist_peak[upper.tri(dist_peak)]
+x <- dist_mass[upper.tri(dist_mass)]
+
+# Fit linear model
+mod <- lm(y ~ x)
+residuals_vec <- residuals(mod)
+
+# Number of elements in upper triangle
+n_upper <- length(species) * (length(species) - 1) / 2
+length(residuals_vec)  # should equal n_upper
+
+# Initialize empty matrix
+res_peak <- matrix(NA, nrow = length(species), ncol = length(species))
+rownames(res_peak) <- colnames(res_peak) <- species
+
+# Assign residuals to upper triangle
+res_peak[upper.tri(res_peak)] <- residuals_vec
+
+# Mirror to lower triangle to make symmetric
+res_peak[lower.tri(res_peak)] <- t(res_peak)[lower.tri(res_peak)]
+
+write.csv2(res_peak, "Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix_mass_corrected.csv", row.names = TRUE)
 
 #--------------
 ## Compute trait distances corrected for phylogenetic relatedness ##

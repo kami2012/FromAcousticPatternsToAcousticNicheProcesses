@@ -13,7 +13,7 @@ setwd("E:/Manuscripts/4_co-occurence")
 ## Load data ##
 #--------------
 
-cooccurrence_pairs <- read.csv2("Data/1_experts/co-occurrence/cooccurrence_pairs_distances_sagar.csv")
+cooccurrence_pairs <- read.csv2("Data/1_experts/co-occurrence/cooccurrence_pairs_distances.csv")
 
 # Recovery gradient categories
 plot_categories <- read.csv("Data/plot_categories.csv", header=T, check.names = F)
@@ -154,8 +154,27 @@ p6 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phy
 
 ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/peak_frequency_phylo-corr_boxplot.png", plot = p6, width = 10, height = 6, dpi = 300)
 
+# Peak frequency distance (mass corrected)
+p7 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_mass_corr, fill = type)) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.8) +
+  #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
+  labs(
+    title = "Mass-corrected Peak Frequency Distance",
+    x = "Plot Category", 
+    y = "Residual Peak Frequency Distance", 
+    fill = "Co-occurrence type"
+  ) +
+  scale_fill_manual(values = c(
+    "positive" = "#1b9e77",
+    "negative" = "#d95f02"
+  )) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/peak_frequency_mass-corr_boxplot.png", plot = p7, width = 10, height = 6, dpi = 300)
+
 # Traits distance (phylo corrected)
-p7 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_phylo_corr, fill = type)) +
+p8 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_phylo_corr, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
@@ -171,7 +190,7 @@ p7 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_ph
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/traits_phylo-corr_boxplot.png", plot = p7, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/traits_phylo-corr_boxplot.png", plot = p8, width = 10, height = 6, dpi = 300)
 
 
 
