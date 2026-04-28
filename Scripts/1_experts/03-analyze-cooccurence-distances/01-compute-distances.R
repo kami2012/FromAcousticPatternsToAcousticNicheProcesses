@@ -181,7 +181,7 @@ write.csv2(dist_phylo, "Data/1_experts/dist_matrices/dist_phylogeny.csv", row.na
 ## Compute peak distances corrected for phylogenetic relatedness ##
 #--------------
 
-dist_peak <- read.csv2("Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix.csv", row.names = 1)
+dist_peak <- read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix.csv", row.names = 1)
 dist_phylo <- read.csv2("Data/1_experts/dist_matrices/dist_phylogeny.csv", row.names = 1)
 
 # Exclude species that have no peak frequencies
@@ -221,13 +221,13 @@ res_peak[upper.tri(res_peak)] <- residuals_vec
 # Mirror to lower triangle to make symmetric
 res_peak[lower.tri(res_peak)] <- t(res_peak)[lower.tri(res_peak)]
 
-write.csv2(res_peak, "Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix_phylo_corrected.csv", row.names = TRUE)
+write.csv2(res_peak, "Data/1_experts/dist_matrices/dist_peak_matrix_phylo_corrected.csv", row.names = TRUE)
 
 #--------------
 ## Compute peak distances corrected for body mass ##
 #--------------
 
-dist_peak <- read.csv2("Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix.csv", row.names = 1)
+dist_peak <- read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix.csv", row.names = 1)
 dist_mass <- read.csv2("Data/1_experts/dist_matrices/dist_mass_matrix.csv", row.names = 1)
 
 # Exclude species that have no peak frequencies
@@ -267,7 +267,48 @@ res_peak[upper.tri(res_peak)] <- residuals_vec
 # Mirror to lower triangle to make symmetric
 res_peak[lower.tri(res_peak)] <- t(res_peak)[lower.tri(res_peak)]
 
-write.csv2(res_peak, "Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix_mass_corrected.csv", row.names = TRUE)
+write.csv2(res_peak, "Data/1_experts/dist_matrices/dist_peak_matrix_mass_corrected.csv", row.names = TRUE)
+
+#--------------
+## Compute peak distances corrected for BOTH Phylogeny and Body Mass ##
+#--------------
+
+dist_peak  <- read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix.csv", row.names = 1)
+dist_phylo <- read.csv2("Data/1_experts/dist_matrices/dist_phylogeny.csv", row.names = 1)
+dist_mass  <- read.csv2("Data/1_experts/dist_matrices/dist_mass_matrix.csv", row.names = 1)
+
+# Exclude specific species (e.g., Ara ambiguus) from all matrices
+exclude <- c("Ara_ambiguus")
+
+dist_phylo <- dist_phylo[!rownames(dist_phylo) %in% exclude, !colnames(dist_phylo) %in% exclude]
+dist_mass  <- dist_mass[!rownames(dist_mass) %in% exclude, !colnames(dist_mass) %in% exclude]
+dist_peak  <- dist_peak[!rownames(dist_peak) %in% exclude, !colnames(dist_peak) %in% exclude]
+
+# Extract the upper triangles (excluding diagonals) to flatten the data
+y_peak  <- dist_peak[upper.tri(dist_peak)]
+x_phylo <- dist_phylo[upper.tri(dist_phylo)]
+x_mass  <- dist_mass[upper.tri(dist_mass)]
+
+# Fit a MULTIPLE linear regression model
+# This isolates the variation in peak frequency distance that is NOT 
+# explained by phylogeny OR body mass.
+mod_both <- lm(y_peak ~ x_phylo + x_mass)
+
+# Extract the residuals
+residuals_both <- residuals(mod_both)
+
+# Reconstruct the distance matrix
+species <- colnames(dist_peak)
+res_matrix <- matrix(NA, nrow = length(species), ncol = length(species))
+rownames(res_matrix) <- colnames(res_matrix) <- species
+
+# Assign residuals to the upper triangle
+res_matrix[upper.tri(res_matrix)] <- residuals_both
+
+# Mirror to the lower triangle to maintain symmetry
+res_matrix[lower.tri(res_matrix)] <- t(res_matrix)[lower.tri(res_matrix)]
+
+write.csv2(res_matrix, "Data/1_experts/dist_matrices/dist_peak_matrix_phylo_mass_corrected.csv", row.names = TRUE)
 
 #--------------
 ## Compute trait distances corrected for phylogenetic relatedness ##

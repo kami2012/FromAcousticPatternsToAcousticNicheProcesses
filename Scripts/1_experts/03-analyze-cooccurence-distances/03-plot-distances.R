@@ -45,10 +45,10 @@ p1 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_distance, 
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
-    title = "Ecological and Morphological Traits Distances",
-    x = "Plot Category", 
-    y = "Traits Distance", 
-    fill = "Co-occurrence type"
+    title = "",
+    x = "Recovery Gradient", 
+    y = "Ecological and Morphological Traits Distance", 
+    fill = "Co-occurrence Type"
   ) +
   scale_fill_manual(values = c(
     "positive" = "#1b9e77",
@@ -64,10 +64,10 @@ p2 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance, fi
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
-    title = "Peak Frequency Distances",
-    x = "Plot Category", 
+    title = "",
+    x = "Recovery Gradient", 
     y = "Peak Frequency Distance", 
-    fill = "Co-occurrence type"
+    fill = "Co-occurrence Type"
   ) +
   scale_fill_manual(values = c(
     "positive" = "#1b9e77",
@@ -83,10 +83,10 @@ p3 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = mass_distance, fi
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
-    title = "Body Mass Distances",
-    x = "Plot Category", 
-    y = "Boody Mass Distance", 
-    fill = "Co-occurrence type"
+    title = "",
+    x = "Recovery Gradient", 
+    y = "Body Mass Distance", 
+    fill = "Co-occurrence Type"
   ) +
   scale_fill_manual(values = c(
     "positive" = "#1b9e77",
@@ -102,10 +102,10 @@ p4 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_wo_mass_di
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
-    title = "Traits without Body Mass Distances",
-    x = "Plot Category", 
+    title = "",
+    x = "Recovery Gradient", 
     y = "Traits without Boody Mass Distance", 
-    fill = "Co-occurrence type"
+    fill = "Co-occurrence Type"
   ) +
   scale_fill_manual(values = c(
     "positive" = "#1b9e77",
@@ -121,10 +121,10 @@ p5 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = phylo_distance, f
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
-    title = "Phylogenetic Distances",
-    x = "Plot Category", 
+    title = "",
+    x = "Recovery Gradient", 
     y = "Phylogenetic Distance", 
-    fill = "Co-occurrence type"
+    fill = "Co-occurrence Type"
   ) +
   scale_fill_manual(values = c(
     "positive" = "#1b9e77",
@@ -140,10 +140,10 @@ p6 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phy
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
-    title = "Phylogenetically Corrected Peak Frequency Distance",
-    x = "Plot Category", 
-    y = "Residual Peak Frequency Distance", 
-    fill = "Co-occurrence type"
+    title = "",
+    x = "Recovery Gradient", 
+    y = "Phylogenetically Corrected Peak Frequency Distance", 
+    fill = "Co-occurrence Type"
   ) +
   scale_fill_manual(values = c(
     "positive" = "#1b9e77",
@@ -159,10 +159,10 @@ p7 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_mas
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
-    title = "Mass-corrected Peak Frequency Distance",
-    x = "Plot Category", 
-    y = "Residual Peak Frequency Distance", 
-    fill = "Co-occurrence type"
+    title = "",
+    x = "Recovery Gradient", 
+    y = "Body-mass-corrected Peak Frequency Distance", 
+    fill = "Co-occurrence Type"
   ) +
   scale_fill_manual(values = c(
     "positive" = "#1b9e77",
@@ -173,15 +173,15 @@ p7 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_mas
 
 ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/peak_frequency_mass-corr_boxplot.png", plot = p7, width = 10, height = 6, dpi = 300)
 
-# Traits distance (phylo corrected)
-p8 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_phylo_corr, fill = type)) +
+# Peak frequency distance (phylo and mass corrected)
+p8 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phylo_mass_corr, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
-    title = "Phylogenetically Corrected Traits Distance",
-    x = "Plot Category", 
-    y = "Residual Traits Distance", 
-    fill = "Co-occurrence type"
+    title = "",
+    x = "Recovery Gradient", 
+    y = "Phylogenetically and Body-mass-corrected Peak Frequency Distance", 
+    fill = "Co-occurrence Type"
   ) +
   scale_fill_manual(values = c(
     "positive" = "#1b9e77",
@@ -190,7 +190,26 @@ p8 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_ph
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/traits_phylo-corr_boxplot.png", plot = p8, width = 10, height = 6, dpi = 300)
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/peak_frequency_phylo-mass-corr_boxplot.png", plot = p8, width = 10, height = 6, dpi = 300)
+
+# Traits distance (phylo corrected)
+p9 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_phylo_corr, fill = type)) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.8) +
+  #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
+  labs(
+    title = "",
+    x = "Recovery Gradient", 
+    y = "Phylogenetically Corrected Traits Distance", 
+    fill = "Co-occurrence Type"
+  ) +
+  scale_fill_manual(values = c(
+    "positive" = "#1b9e77",
+    "negative" = "#d95f02"
+  )) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("Plots/1_experts/distances_gradient_boxplot_sagar/traits_phylo-corr_boxplot.png", plot = p9, width = 10, height = 6, dpi = 300)
 
 
 

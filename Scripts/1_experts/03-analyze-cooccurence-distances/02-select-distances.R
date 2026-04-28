@@ -22,13 +22,14 @@ load("Data/1_experts/co-occurrence/cooccurrence_results.RData") # cooccurrence p
 # Distance matrices
 load("Data/1_experts/dist_matrices/distM.rda") # Traits
 dist_traits <- distM
-dist_peak <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix.csv", row.names = 1)) # peak frequencies
+dist_peak <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix.csv", row.names = 1)) # peak frequencies
 dist_mass <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_mass_matrix.csv", row.names = 1)) # body mass
 dist_traits_wo_mass <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_traits_wo_mass_matrix.csv", row.names = 1)) # Gower distance trait matrix (ecological and morphological traits) without body mass
 dist_phylo <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_phylogeny.csv", row.names = 1)) 
 dist_traits_phylo_corr <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_trait_matrix_phylo_corrected.csv", row.names = 1))
-dist_peak_phylo_corr <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix_phylo_corrected.csv", row.names = 1))
-dist_peak_mass_corr <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_peak_freq_sagar/dist_peak_matrix_mass_corrected.csv", row.names = 1))
+dist_peak_phylo_corr <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix_phylo_corrected.csv", row.names = 1))
+dist_peak_mass_corr <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix_mass_corrected.csv", row.names = 1))
+dist_peak_phylo_mass_corr <- as.matrix(read.csv2("Data/1_experts/dist_matrices/dist_peak_matrix_phylo_mass_corrected.csv", row.names = 1))
 
 #--------------
 ## Filter significant co-occurrence results ##
@@ -92,6 +93,11 @@ cooccurrence_pairs$peak_distance_phylo_corr <-
 
 cooccurrence_pairs$peak_distance_mass_corr <-
   mapply(extract_dist, mat = list(dist_peak_mass_corr),
+         sp1 = cooccurrence_pairs$sp1_name,
+         sp2 = cooccurrence_pairs$sp2_name)
+
+cooccurrence_pairs$peak_distance_phylo_mass_corr <-
+  mapply(extract_dist, mat = list(dist_peak_phylo_mass_corr),
          sp1 = cooccurrence_pairs$sp1_name,
          sp2 = cooccurrence_pairs$sp2_name)
 

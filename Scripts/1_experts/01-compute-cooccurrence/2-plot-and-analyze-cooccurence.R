@@ -7,6 +7,7 @@ setwd("E:/Manuscripts/4_co-occurence")
 library(ggplot2)
 library(purrr)
 library(dplyr)
+library(tidyr)
 
 ## ============================================================================================================ ##
 ## Plot probabilistic co-occurrence results 
@@ -27,7 +28,7 @@ plot_categories <- plot_categories[, 1:7]
 ## Preprocess and aggregate co-occurrence counts ##
 #--------------
 
-# Use map_dfr to iterate over all plots in results_cooccurrence and bind the results by row.
+# Use map_dfr to iterate over all plots in results_cooccurrence and bind the results by row
 cooccurrence <- map_dfr(names(results_cooccurrence), function(plot) {
   res <- results_cooccurrence[[plot]]
   
@@ -69,9 +70,9 @@ cooccurrence_portions <- cooccurrence %>%
   mutate(
     classified_pairs = positive + negative + random,
     
-    Positive_portion = positive / classified_pairs,
+    positive_proportion = positive / classified_pairs,
     
-    Negative_portion = negative / classified_pairs) %>%
+    negative_proportion = negative / classified_pairs) %>%
   rename(Species = species)
 
 #--------------
@@ -99,39 +100,59 @@ cooccurrence_gradient$Label <- factor(
 # Sort by category label 
 cooccurrence_gradient <- cooccurrence_gradient[order(cooccurrence_gradient$Label), ]
 
-
 # Convert to long format
 df_long <- cooccurrence_gradient %>%
-  pivot_longer(cols = c("Positive_portion", "Negative_portion"), 
-               names_to = "Type", values_to = "Portion")
+  pivot_longer(cols = c("positive_proportion", "negative_proportion"), 
+               names_to = "Type", values_to = "Proportion")
 
 # Boxplot by Type
-p <- ggplot(df_long, aes(x = Label, y = Portion, fill = Type)) +
-  geom_boxplot(outlier.shape = 1, alpha = 0.8) +
-  facet_wrap(~ Type, scales = "fixed") +
+p <- ggplot(df_long, aes(x = Label, y = Proportion, fill = Type)) +
+  geom_boxplot(outlier.shape = 1, alpha = 0.8, position = position_dodge(0.8)) +
+  
   scale_y_continuous(
     breaks = seq(0.0, 0.15, by = 0.025),
     name = "Proportion of Non-Randomly Associated Pairs"
   ) +
+  
   # Begrenzung der Ansicht (Ansicht beschneiden, Daten behalten)
   coord_cartesian(ylim = c(0.0, 0.15)) +
   labs(
     title = "",
     x = "Recovery Gradient", 
     fill = "Co-occurrence Type") +
-  scale_fill_manual(values = c(
-    "Positive_portion" = "#1b9e77",
-    "Negative_portion" = "#d95f02"
-  )) +
+  
+  scale_fill_manual(
+    values = c(
+    "positive_proportion" = "#1b9e77",
+    "negative_proportion" = "#d95f02"
+    ),
+    labels = c(
+      "positive_proportion" = "Positive",
+      "negative_proportion" = "Negative"
+    )
+  
+  ) +
+  
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(
+    axis.title = element_text(size = 14), 
+    axis.text = element_text(size = 12, color = "black"),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 11),
+    legend.position = c(0.98, 0.98), # x=0.95 (far right), y=0.95 (top)
+    legend.justification = c("right", "top"), # Anchors the corner of the legend box
+    legend.background = element_rect(fill = alpha("white", 0.5)), # Semi-transparent background)
+    legend.title = element_text(size = 12), 
+    legend.text = element_text(size = 10),
+  )
+  
+print(p)
 
 # Save as PNG
 ggsave("Plots/1_experts/co-occurrences_proportion_boxplot.png", plot = p, width = 10, height = 6, dpi = 300)
 
 
-wilcox.test(cooccurrence_gradient$Positive_portion, 
-            cooccurrence_gradient$Negative_portion, 
+wilcox.test(cooccurrence_gradient$positive_proportion, 
+            cooccurrence_gradient$negative_proportion, 
             paired = TRUE)
 
 #Wilcoxon signed rank test with continuity correction
@@ -140,7 +161,8 @@ wilcox.test(cooccurrence_gradient$Positive_portion,
 #V = 2400, p-value = 1.026e-12
 #alternative hypothesis: true location shift is not equal to 0
 
-cooccurrence_gradient$Difference <- cooccurrence_gradient$Positive_portion - cooccurrence_gradient$Negative_portion
+# Check normality of the data
+cooccurrence_gradient$Difference <- cooccurrence_gradient$positive_proportion - cooccurrence_gradient$negative_proportion
 
 hist(cooccurrence_gradient$Difference)
 
