@@ -1,2 +1,5 @@
 Data/Peak_frequencies/data_from_xeno-canto/song_recordings_xc
 Scripts/02-measure-peak-frequencies/02-download-recordings.R
+Plots
+.RData
+.Rhistory
