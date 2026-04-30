@@ -29,11 +29,18 @@ In this hyperdiverse system, ecologically similar species tend to cluster tempor
 ### Software
 
 - R (version 4.4.0 or higher)
-- RStudio (recommended, project managed via ```4_co-occurence.Rproj``` file)
+- RStudio (recommended, project managed via ```Habitat_Complexity_Clustering.Rproj``` file)
 
 ### Key R Packages
 
-- 
+- **Data Access**: ```httr```, ```jsonlite```
+- **Data Handling**: ```dplyr```, ```stringr```, ```tidyr```
+- **Co-Occurrence Analysis**: ```cooccur```
+- **Audio Processing**: ```seewave```, ```tuneR```
+- **Phylogeny**: ```ape```, ```purrr```
+- **Modeling & Statistics**: ```lme4```, ```multcomp```, ```ARTool```
+- **Plotting**: ```ggplot2```, ```ggrepel```
+
 ## Code Structure
 
 The analysis is organized in numbered scripts reflecting the workflow hierarchy. Scripts should be executed sequentially in ascending order.
