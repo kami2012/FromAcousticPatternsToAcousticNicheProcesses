@@ -1,9 +1,6 @@
 rm(list=ls(all=TRUE))
 Sys.setenv(LANG = "en")
 
-# Working directory
-setwd("E:/Manuscripts/4_co-occurence") 
-
 library(dplyr)
 
 ## ============================================================================================================ ##

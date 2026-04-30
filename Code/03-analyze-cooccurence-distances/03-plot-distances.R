@@ -1,9 +1,6 @@
 rm(list=ls(all=TRUE))
 Sys.setenv(LANG = "en")
 
-# Working directory
-setwd("E:/Manuscripts/4_co-occurence") 
-
 
 ## ============================================================================================================ ##
 ## Plot pairwise distances between co-occurring species based on phylogeny and trait data 
