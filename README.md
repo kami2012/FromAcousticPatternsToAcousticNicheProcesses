@@ -24,6 +24,16 @@ Instead, habitat complexity expands the available acoustic space (quantified as 
 - **Temporal Clustering**: Contrary to ANH predictions, positive co-occurrences (temporal overlap) outnumber negative ones.
 In this hyperdiverse system, ecologically similar species tend to cluster temporally rather than avoid overlap.
 
+## Requirements
+
+### Software
+
+- R (version 4.4.0 or higher)
+- RStudio (recommended, project managed via ```4_co-occurence.Rproj``` file)
+
+### Key R Packages
+
+- 
 ## Code Structure
 
 The analysis is organized in numbered scripts reflecting the workflow hierarchy. Scripts should be executed sequentially in ascending order.
@@ -48,10 +58,6 @@ The folder structure reflects conceptual data sources rather than processing sta
 - ```BirdNET_detections```: Automated species detections derived from acoustic recordings.
 
 - ```Expert_detections```: Detections based on manually labelled species identifications.
-
-
-## Requirements
-
 
 - ```Co-occurrence```: Temporal overlap within 2-minute intervals and associated distance metrics for co-occurring species pairs.
   
