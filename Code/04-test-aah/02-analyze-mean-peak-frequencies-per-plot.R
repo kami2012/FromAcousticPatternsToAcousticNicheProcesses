@@ -4,6 +4,7 @@ Sys.setenv(LANG = "en")
 library(dplyr)
 library(lme4)
 library(multcomp)
+library(corrplot)
 
 ## ============================================================================================================ ##
 ## Test the Acoustic Adaptation Hypothesis (AAH) by linking frequency metrics with succession 
@@ -13,7 +14,34 @@ library(multcomp)
 ## Load data ##
 #--------------
 
-dat <- read.csv2("Data/Testing_AAH/mean_peak_frequency_per_plot_mass_corrected.csv")
+freq <- read.csv2("Data/Testing_AAH/mean_peak_frequency_per_plot_mass_corrected.csv")
+
+tls <- read.csv2("Data/Testing_AAH/reassembly_tls plotdata_Ehbrecht.csv")
+
+# Correct plot name
+tls$plot[tls$plot == "OG28"] <- "PR28"
+
+
+tls$veg_age[tls$veg_type == "old growth forest"] <- 50
+
+
+# Test successional age as a surrogate for forest structural metrics 
+cor(tls$veg_age, tls$ssci, use = "complete.obs")
+# [1] 0.7467907
+
+cor(tls$veg_age, tls$enl, use = "complete.obs")
+#[1] 0.689193
+
+cor(tls$veg_age, tls$canopy_height, use = "complete.obs")
+#[1] 0.7972484
+
+
+dat <- merge(
+  freq[, c("plot", "mean_freq_UNWEIGHTED", "sd_freq_UNWEIGHTED")],
+  tls,
+  by = "plot"
+)
+
 
 # Load recovery gradient categories
 plot_categories <- read.csv("Data/plot_categories.csv", header=T, check.names = F)
@@ -39,44 +67,38 @@ dat$Label <- factor(
 # Create an ordered factor variable
 dat$Label_ord <- ordered(dat$Label,c("A_P" , "A_C" , "F_P" , "F_C" , "F_P_RegI", "F_C_RegI", "A_Old" , "F_P_RegII", "F_C_RegII","F_Old"))
 
-# Load the numerical succession time variable
-succession_time <- read.csv2("Data/Testing_AAH/Environ87.csv")
+write.csv2(dat, "Data/Testing_AAH/mean_peak_frequency_per_plot_mass_corrected_tls.csv", row.names = FALSE) 
 
-dat <- merge(
-  dat,
-  succession_time[, c("Plot_ID", "Succession")],
-  by.x = "plot",
-  by.y = "Plot_ID",
-  all.x = TRUE
-)
+# Test the relation between freq and different forest structural metrics
+summary(lm(mean_freq_UNWEIGHTED ~ ssci, data = dat))
+
+summary(lm(sd_freq_UNWEIGHTED ~ ssci, data = dat))
 
 
-write.csv2(dat, "Data/Testing_AAH/mean_peak_frequency_per_plot_mass_corrected_gradient_succession.csv", row.names = FALSE) 
+summary(lm(mean_freq_UNWEIGHTED ~ enl, data = dat))
 
-# Filter Reassembly plots
-dat_reassembly <- dat %>%
-  dplyr::filter(grepl("^F_", Label))
+summary(lm(sd_freq_UNWEIGHTED ~ enl, data = dat))
 
 
+summary(lm(mean_freq_UNWEIGHTED ~ canopy_height, data = dat))
 
-model_mean_freq_succ <- lm (mean_freq_UNWEIGHTED ~ Succession, data = dat_reassembly)
-summary(model_mean_freq_succ)
-
-model_sd_freq_succ <- lm (sd_freq_UNWEIGHTED ~ Succession, data = dat_reassembly)
-summary(model_sd_freq_succ)
-
-plot(model_sd_freq_succ, which = 1) # Residuals vs Fitted
-plot(model_sd_freq_succ, which = 4) # Cook's Distance
-
-model_check <- lm(sd_freq_UNWEIGHTED ~ Succession + num_unique_species, data = dat_reassembly)
-summary(model_check)
-
-anova(model_sd_freq_succ, model_check)
+summary(lm(sd_freq_UNWEIGHTED ~ canopy_height, data = dat))
 
 
-model_mean_freq_gradient <- lm(mean_freq_UNWEIGHTED ~ Label_ord, data = dat_reassembly)
-summary(model_mean_freq_gradient)
+summary(lm(mean_freq_UNWEIGHTED ~ veg_age, data = dat))
 
-model_sd_freq_gradient <- lm(sd_freq_UNWEIGHTED ~ Label_ord, data = dat)
-summary(model_sd_freq_gradient)
+summary(lm(sd_freq_UNWEIGHTED ~ veg_age, data = dat))
+
+
+
+# Test for non-linear relationships between SSCI and frequency dispersion
+m_lin <- lm(sd_freq_UNWEIGHTED ~ ssci, data = dat)
+
+m_quad <- lm(sd_freq_UNWEIGHTED ~ ssci + I(ssci^2), data = dat)
+
+summary(m_quad)
+
+anova(m_lin, m_quad)
+
+
 
