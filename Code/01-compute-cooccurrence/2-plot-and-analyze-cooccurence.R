@@ -108,7 +108,7 @@ p <- ggplot(df_long, aes(x = Label, y = Proportion, fill = Type)) +
   
   scale_y_continuous(
     breaks = seq(0.0, 0.15, by = 0.025),
-    name = "Proportion of Non-Randomly Associated Pairs"
+    name = "Proportion of Classified Species Pairs"
   ) +
   
   # Begrenzung der Ansicht (Ansicht beschneiden, Daten behalten)
@@ -116,7 +116,7 @@ p <- ggplot(df_long, aes(x = Label, y = Proportion, fill = Type)) +
   labs(
     title = "",
     x = "Recovery Gradient", 
-    fill = "Co-occurrence Type") +
+    fill = "Temporal Association Type") +
   
   scale_fill_manual(
     values = c(

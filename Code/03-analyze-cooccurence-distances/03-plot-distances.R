@@ -1,6 +1,8 @@
 rm(list=ls(all=TRUE))
 Sys.setenv(LANG = "en")
 
+library(ggplot2)
+
 
 ## ============================================================================================================ ##
 ## Plot pairwise distances between co-occurring species based on phylogeny and trait data 
@@ -37,15 +39,15 @@ cooccurrence_pairs_categories$Label <- factor(
 ## Plot distances (Boxplot) ##
 #--------------
 
-# Ecological and morphological traits distance
-p1 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_distance, fill = type)) +
+# Peak-frequency distance
+p1 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
     title = "",
     x = "Recovery Gradient", 
-    y = "Ecological and Morphological Traits Distance", 
-    fill = "Co-occurrence Type"
+    y = "Peak-Frequency Distance", 
+    fill = "Temporal Association Type"
   ) +
   
   scale_fill_manual(values = c(
@@ -56,44 +58,7 @@ p1 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_distance, 
   labels = c(
     "positive" = "Positive",
     "negative" = "Negative",
-    "random" = "Random"
-  )) +
-  
-  theme_bw() +
-  theme(
-    axis.title = element_text(size = 14), 
-    axis.text = element_text(size = 12, color = "black"),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 11),
-    legend.position = c(0.98, 0.98), # x=0.95 (far right), y=0.95 (top)
-    legend.justification = c("right", "top"), # Anchors the corner of the legend box
-    legend.background = element_rect(fill = alpha("white", 0.5)), # Semi-transparent background)
-    legend.title = element_text(size = 12), 
-    legend.text = element_text(size = 10)
-  )
-print(p1)
-
-ggsave("Plots/Distances/trait_distances_boxplot.png", plot = p1, width = 10, height = 6, dpi = 300)
-
-# Peak frequency distance
-p2 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance, fill = type)) +
-  geom_boxplot(outlier.shape = NA, alpha = 0.8) +
-  #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
-  labs(
-    title = "",
-    x = "Recovery Gradient", 
-    y = "Peak Frequency Distance", 
-    fill = "Co-occurrence Type"
-  ) +
-  
-  scale_fill_manual(values = c(
-    "positive" = "#1b9e77",
-    "negative" = "#d95f02",
-    "random" = "grey70" # Neutral baseline
-  ), 
-  labels = c(
-    "positive" = "Positive",
-    "negative" = "Negative",
-    "random" = "Random"
+    "random" = "Non-significant"
   )) +
   
   theme_bw() +
@@ -108,196 +73,18 @@ p2 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance, fi
     legend.text = element_text(size = 10)
   )
 
-ggsave("Plots/Distances/peak_distances_boxplot.png", plot = p2, width = 10, height = 6, dpi = 300)
+ggsave("Plots/Distances/peak_frequency_distances.png", plot = p1, width = 10, height = 6, dpi = 300)
 
-# Body mass distance
-p3 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = mass_distance, fill = type)) +
-  geom_boxplot(outlier.shape = NA, alpha = 0.8) +
-  #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
-  labs(
-    title = "",
-    x = "Recovery Gradient", 
-    y = "Body Mass Distance", 
-    fill = "Co-occurrence Type"
-  ) +
-  
-  scale_fill_manual(values = c(
-    "positive" = "#1b9e77",
-    "negative" = "#d95f02",
-    "random" = "grey70" # Neutral baseline
-  ), 
-  labels = c(
-    "positive" = "Positive",
-    "negative" = "Negative",
-    "random" = "Random"
-  )) +
-  
-  theme_bw() +
-  theme(
-    axis.title = element_text(size = 14), 
-    axis.text = element_text(size = 12, color = "black"),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 11),
-    legend.position = c(0.98, 0.98), # x=0.95 (far right), y=0.95 (top)
-    legend.justification = c("right", "top"), # Anchors the corner of the legend box
-    legend.background = element_rect(fill = alpha("white", 0.5)), # Semi-transparent background)
-    legend.title = element_text(size = 12), 
-    legend.text = element_text(size = 10)
-  )
-
-ggsave("Plots/Distances/mass_distances_boxplot.png", plot = p3, width = 10, height = 6, dpi = 300)
-
-# Traits without body mass distance
-p4 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_wo_mass_distance, fill = type)) +
-  geom_boxplot(outlier.shape = NA, alpha = 0.8) +
-  #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
-  labs(
-    title = "",
-    x = "Recovery Gradient", 
-    y = "Traits without Boody Mass Distance", 
-    fill = "Co-occurrence Type"
-  ) +
-  
-  scale_fill_manual(values = c(
-    "positive" = "#1b9e77",
-    "negative" = "#d95f02",
-    "random" = "grey70" # Neutral baseline
-  ), 
-  labels = c(
-    "positive" = "Positive",
-    "negative" = "Negative",
-    "random" = "Random"
-  )) +
-  
-  theme_bw() +
-  theme(
-    axis.title = element_text(size = 14), 
-    axis.text = element_text(size = 12, color = "black"),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 11),
-    legend.position = c(0.98, 0.98), # x=0.95 (far right), y=0.95 (top)
-    legend.justification = c("right", "top"), # Anchors the corner of the legend box
-    legend.background = element_rect(fill = alpha("white", 0.5)), # Semi-transparent background)
-    legend.title = element_text(size = 12), 
-    legend.text = element_text(size = 10)
-  )
-
-ggsave("Plots/Distances/traits_wo_mass_distances_boxplot.png", plot = p4, width = 10, height = 6, dpi = 300)
-
-# Phylogenetic distance
-p5 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = phylo_distance, fill = type)) +
-  geom_boxplot(outlier.shape = NA, alpha = 0.8) +
-  #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
-  labs(
-    title = "",
-    x = "Recovery Gradient", 
-    y = "Phylogenetic Distance", 
-    fill = "Co-occurrence Type"
-  ) +
-  
-  scale_fill_manual(values = c(
-    "positive" = "#1b9e77",
-    "negative" = "#d95f02",
-    "random" = "grey70" # Neutral baseline
-  ), 
-  labels = c(
-    "positive" = "Positive",
-    "negative" = "Negative",
-    "random" = "Random"
-  )) +
-  
-  theme_bw() +
-  theme(
-    axis.title = element_text(size = 14), 
-    axis.text = element_text(size = 12, color = "black"),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 11),
-    legend.position = c(0.98, 0.98), # x=0.95 (far right), y=0.95 (top)
-    legend.justification = c("right", "top"), # Anchors the corner of the legend box
-    legend.background = element_rect(fill = alpha("white", 0.5)), # Semi-transparent background)
-    legend.title = element_text(size = 12), 
-    legend.text = element_text(size = 10)
-  )
-
-ggsave("Plots/Distances/phylo_distances_boxplot.png", plot = p5, width = 10, height = 6, dpi = 300)
-
-# Peak frequency distance (phylo corrected)
-p6 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phylo_corr, fill = type)) +
-  geom_boxplot(outlier.shape = NA, alpha = 0.8) +
-  #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
-  labs(
-    title = "",
-    x = "Recovery Gradient", 
-    y = "Phylogenetically Corrected Peak Frequency Distance", 
-    fill = "Co-occurrence Type"
-  ) +
-  
-  scale_fill_manual(values = c(
-    "positive" = "#1b9e77",
-    "negative" = "#d95f02",
-    "random" = "grey70" # Neutral baseline
-  ), 
-  labels = c(
-    "positive" = "Positive",
-    "negative" = "Negative",
-    "random" = "Random"
-  )) +
-  
-  theme_bw() +
-  theme(
-    axis.title = element_text(size = 14), 
-    axis.text = element_text(size = 12, color = "black"),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 11),
-    legend.position = c(0.98, 0.98), # x=0.95 (far right), y=0.95 (top)
-    legend.justification = c("right", "top"), # Anchors the corner of the legend box
-    legend.background = element_rect(fill = alpha("white", 0.5)), # Semi-transparent background)
-    legend.title = element_text(size = 12), 
-    legend.text = element_text(size = 10)
-  )
-ggsave("Plots/Distances/peak_frequency_phylo-corr_boxplot.png", plot = p6, width = 10, height = 6, dpi = 300)
-
-# Peak frequency distance (mass corrected)
-p7 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_mass_corr, fill = type)) +
-  geom_boxplot(outlier.shape = NA, alpha = 0.8) +
-  #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
-  labs(
-    title = "",
-    x = "Recovery Gradient", 
-    y = "Body-mass-corrected Peak Frequency Distance", 
-    fill = "Co-occurrence Type"
-  ) +
-  
-  scale_fill_manual(values = c(
-    "positive" = "#1b9e77",
-    "negative" = "#d95f02",
-    "random" = "grey70" # Neutral baseline
-  ), 
-  labels = c(
-    "positive" = "Positive",
-    "negative" = "Negative",
-    "random" = "Random"
-  )) +
-  
-  theme_bw() +
-  theme(
-    axis.title = element_text(size = 14), 
-    axis.text = element_text(size = 12, color = "black"),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 11),
-    legend.position = c(0.98, 0.98), # x=0.95 (far right), y=0.95 (top)
-    legend.justification = c("right", "top"), # Anchors the corner of the legend box
-    legend.background = element_rect(fill = alpha("white", 0.5)), # Semi-transparent background)
-    legend.title = element_text(size = 12), 
-    legend.text = element_text(size = 10)
-  )
-
-ggsave("Plots/Distances/peak_frequency_mass-corr_boxplot.png", plot = p7, width = 10, height = 6, dpi = 300)
 
 # Peak frequency distance (phylo and mass corrected)
-p8 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phylo_mass_corr, fill = type)) +
+p2 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phylo_mass_corr, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
     title = "",
     x = "Recovery Gradient", 
-    y = "Phylogeny- and Mass-corrected Peak Frequency Distance", 
-    fill = "Co-occurrence Type"
+    y = "Adjusted Peak-Frequency Distance", 
+    fill = "Temporal Association Type"
   ) +
   
   scale_fill_manual(values = c(
@@ -308,7 +95,7 @@ p8 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phy
   labels = c(
     "positive" = "Positive",
     "negative" = "Negative",
-    "random" = "Random"
+    "random" = "Non-significant"
   )) +
   
   theme_bw() +
@@ -323,17 +110,18 @@ p8 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = peak_distance_phy
     legend.text = element_text(size = 10)
   )
 
-ggsave("Plots/Distances/peak_frequency_phylo-mass-corr_boxplot.png", plot = p8, width = 10, height = 6, dpi = 300)
+ggsave("Plots/Distances/adjusted_peak_frequency_distances.png", plot = p2, width = 10, height = 6, dpi = 300)
 
-# Traits distance (phylo corrected)
-p9 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_phylo_corr, fill = type)) +
+
+# Traits without body-mass distance
+p3 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = traits_wo_mass_distance, fill = type)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
   #geom_vline(xintercept = 3.5, color = "black", linewidth = 0.6) +  # optional
   labs(
     title = "",
     x = "Recovery Gradient", 
-    y = "Phylogenetically Corrected Traits Distance", 
-    fill = "Co-occurrence Type"
+    y = "Ecological–Morphological Trait Distance", 
+    fill = "Temporal Association Type"
   ) +
   
   scale_fill_manual(values = c(
@@ -344,7 +132,7 @@ p9 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_ph
   labels = c(
     "positive" = "Positive",
     "negative" = "Negative",
-    "random" = "Random"
+    "random" = "Non-significant"
   )) +
   
   theme_bw() +
@@ -359,7 +147,13 @@ p9 <- ggplot(cooccurrence_pairs_categories, aes(x = Label, y = trait_distance_ph
     legend.text = element_text(size = 10)
   )
 
-ggsave("Plots/Distances/traits_phylo-corr_boxplot.png", plot = p9, width = 10, height = 6, dpi = 300)
+ggsave("Plots/Distances/ecological–morphological_trait_distances.png", plot = p3, width = 10, height = 6, dpi = 300)
+
+
+
+
+
+
 
 
 

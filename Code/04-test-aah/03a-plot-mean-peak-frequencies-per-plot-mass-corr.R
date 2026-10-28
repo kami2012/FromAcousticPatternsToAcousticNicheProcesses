@@ -42,11 +42,10 @@ plot_sd_ssci <- ggplot(dat, aes(x = ssci, y = sd_freq_UNWEIGHTED)) +
   geom_smooth(method = "lm", se = TRUE,
               color = "black", linewidth = 1,
               fill = "grey70", alpha = 0.2) +
-  geom_point(aes(color = ssci), size = 2.5, alpha = 0.7) +
-  scale_color_gradient(low = "gold", high = "forestgreen") +
+  geom_point(color = "black", size = 2.5, alpha = 1) +
   labs(
     x = "Forest Structural Complexity (SSCI)",
-    y = "SD of body mass-corrected frequency residuals"
+    y = "SD of Body-Mass-Adjusted Peak-Frequency Residuals"
   ) +
   theme_classic() +
   theme(
@@ -70,7 +69,7 @@ plot_sd_ssci <- ggplot(dat, aes(x = ssci, y = sd_freq_UNWEIGHTED)) +
 print(plot_sd_ssci)
 
 ggsave(
-  "Plots/Testing_AAH/acoustic_dispersion_vs_ssci_mass_corrected.png",
+  "Plots/Testing_AAH/sd_peak_frequency_vs_ssci_mass_adjusted.png",
   plot = plot_sd_ssci,
   width = 10,
   height = 6,
@@ -86,13 +85,12 @@ p_val_mean <- signif(summary_mean_ssci$coefficients["ssci", "Pr(>|t|)"], 3)
 
 plot_mean_ssci <- ggplot(dat, aes(x = ssci, y = mean_freq_UNWEIGHTED)) +
   geom_smooth(method = "lm", se = TRUE,
-              color = "black", linewidth = 1,
+              color = "black", linewidth = 1, linetype="dashed",
               fill = "grey70", alpha = 0.2) +
-  geom_point(aes(color = ssci), size = 2.5, alpha = 0.7) +
-  scale_color_gradient(low = "gold", high = "forestgreen") +
+  geom_point(color = "black", size = 2.5, alpha = 1) +
   labs(
     x = "Forest Structural Complexity (SSCI)",
-    y = "Mean body mass-corrected frequency residuals"
+    y = "Mean Body-Mass-Adjusted Peak-Frequency Residual"
   ) +
   theme_classic() +
   theme(
@@ -116,7 +114,7 @@ plot_mean_ssci <- ggplot(dat, aes(x = ssci, y = mean_freq_UNWEIGHTED)) +
 print(plot_mean_ssci)
 
 ggsave(
-  "Plots/Testing_AAH/mean_frequency_vs_ssci_mass_corrected.png",
+  "Plots/Testing_AAH/mean_peak_frequency_vs_ssci_mass_adjusted.png",
   plot = plot_mean_ssci,
   width = 10,
   height = 6,

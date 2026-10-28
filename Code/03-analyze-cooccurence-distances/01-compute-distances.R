@@ -346,3 +346,5 @@ res_mat[lower.tri(res_mat)] <- t(res_mat)[lower.tri(res_mat)]
 
 write.csv2(res_mat, "Data/Dist_matrices/dist_trait_matrix_phylo_corrected.csv", row.names = TRUE)
 
+
+

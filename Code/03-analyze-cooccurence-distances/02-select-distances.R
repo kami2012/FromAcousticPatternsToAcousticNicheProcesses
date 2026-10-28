@@ -29,7 +29,7 @@ dist_peak_mass_corr <- as.matrix(read.csv2("Data/Dist_matrices/dist_peak_matrix_
 dist_peak_phylo_mass_corr <- as.matrix(read.csv2("Data/Dist_matrices/dist_peak_matrix_phylo_mass_corrected.csv", row.names = 1))
 
 #--------------
-## Filter significant co-occurrence results ##
+## Classify co-occurrence results ##
 #--------------
 
 cooccurrence_pairs <- map_dfr(names(results_cooccurrence), function(p) {

@@ -4,7 +4,8 @@ Sys.setenv(LANG = "en")
 # Working directory
 setwd("E:/Manuscripts/4_co-occurence") 
 
-
+library(ggplot2)
+library(dplyr)
 
 ## ============================================================================================================ ##
 ## Number of birds per file detected by experts and CNN models 
@@ -61,9 +62,9 @@ colors <- c(
 p <- ggplot(df_long, aes(x = Model, y = birds_per_file, fill = Model)) +
   geom_boxplot(alpha = 0.7, outlier.colour = "grey40", outlier.size = 1) +
   theme_bw() +
-  labs(title = "Birds Detected per 2-min Audio File",
+  labs(title = "Number of bird species detected per 2-min recording",
        x = "Model",
-       y = "Number of Detections") +
+       y = "Number of species detected") +
   scale_fill_manual(values = colors) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         legend.position = "none")

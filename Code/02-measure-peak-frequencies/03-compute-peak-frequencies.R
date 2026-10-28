@@ -30,7 +30,6 @@ get_peak_freq <- function(file, threshold_db = -80, min_freq_hz = 400, max_freq_
   # Convert signal to numeric vector
   sig <- wave@left / (2^(wave@bit - 1))  # normalize to -1..1
   
-  # Compute spectrum using Hann window over fft_len points
   spec_res <- spec.pgram(sig,
                          spans = NULL,
                          taper = 0.1,       # small Hann taper
