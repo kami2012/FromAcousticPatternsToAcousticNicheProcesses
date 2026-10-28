@@ -46,7 +46,7 @@ The analysis is organized in numbered scripts reflecting the workflow hierarchy.
 
 - ```01_compute-cooccurrence```: Processing of detection data to identify species co-occurring within the same 2 minutes.
   
-- ```02_measure-peak-frequencies```: Automated extraction of peak frequencies and validation against Mikula et al. (2021) and Sagar et al. (2024).
+- ```02_measure-peak-frequencies```: Compilation of species-level peak frequencies from Sagar et al. (2024) and automated estimation of peak frequencies from acoustic recordings for species lacking suitable published values.
   
 - ```03_analyze-cooccurrence-distances```: Calculation of acoustic, phylogenetic and ecological distances between co-occurring species.
   
