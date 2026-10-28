@@ -59,17 +59,18 @@ Note: Each Level 1 folder contains **Level 2** scripts for specific tasks like d
 
 The folder structure reflects conceptual data sources rather than processing stages. All transformations are handled in the scripts.
 
-- ```BirdNET_detections```: Automated species detections derived from acoustic recordings.
+- ```Co-occurrence```: Temporal overlap within 2-minute intervals and associated distance metrics for co-occurring species pairs.
+
+- ```Dis_matrices```: Calculated distance matrices (acoustic, phylogenetic, ecological, and morphological).
 
 - ```Expert_detections```: Detections based on manually labelled species identifications.
 
-- ```Co-occurrence```: Temporal overlap within 2-minute intervals and associated distance metrics for co-occurring species pairs.
-  
 - ```Peak_frequencies```: Species-specific peak frequencies (acoustic traits) derived from literature and our automated spectral analysis.
+
+- ```Testing_AAH```: Community-level acoustic metrics (mean and standard deviation of peak frequency) aggregated per plot.
   
 - ```Traits_phylo```: Functional trait and phylogenetic data for all recorded species.
   
-- ```Dis_matrices```: Calculated distance matrices (acoustic, phylogenetic, ecological, and morphological).
 
-- ```Testing_AAH```: Community-level acoustic metrics (mean and standard deviation of peak frequency) aggregated per plot.
+
 
